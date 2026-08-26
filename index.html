@@ -1,79 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AVIATOR - BetPawa Demo</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>AVIATOR</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#0d111c;color:#fff}
-.top{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#151b2b;border-bottom:2px solid #1e2940}
-.top b{font-size:18px}.top b i{color:#ff2d2d;font-style:normal}
-.bal{background:#1e2940;padding:6px 14px;border-radius:20px;color:#00e676;font-weight:900;font-size:13px}
-.hist{display:flex;gap:5px;padding:8px;background:#0d111c;overflow:auto}
-.hist span{padding:4px 10px;border-radius:15px;font-size:12px;font-weight:800;flex-shrink:0;background:#1c2336;color:#6b7aa0}
-#game{background:#090c15;height:50vh;position:relative;overflow:hidden;border-bottom:1px solid #1e2940}
+.top{display:flex;justify-content:space-between;padding:7px 8px;background:#151b2b;align-items:center}
+.bal{background:#1e2940;padding:4px 8px;border-radius:12px;color:#00e676;font-weight:800;font-size:11px}
+.hist{display:flex;gap:3px;padding:5px;overflow:auto;background:#0d111c;min-height:28px}
+.hist span{padding:2px 7px;border-radius:10px;font-size:10px;font-weight:700;flex-shrink:0;background:#1c2336}
+#game{background:#080a12;height:38vh;position:relative;overflow:hidden}
 canvas{position:absolute;inset:0;width:100%;height:100%}
-#plane{position:absolute;z-index:2;font-size:28px}
-#center{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);text-align:center;z-index:3}
-#mult{font-size:62px;font-weight:900}
-#flew{color:#ff3b3b;display:none;font-weight:900;margin-top:4px;font-size:20px}
-.demo-badge{background:#ff9f00;color:#000;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:900;margin-left:8px}
-.bets{display:flex;gap:8px;padding:8px;background:#0d111c}
-.card{flex:1;background:#1a2236;border-radius:14px;padding:10px;border:1px solid #243150}
-.label{font-size:11px;color:#8a9cc5;margin-bottom:6px;display:flex;justify-content:space-between}
-.inputBox{background:#0f1525;border:1px solid #2a3a5c;border-radius:24px;display:flex;align-items:center;padding:4px}
-.inputBox button{width:30px;height:30px;border-radius:50%;border:none;background:#243150;color:#fff;font-weight:900}
-.inputBox input{flex:1;background:transparent;border:none;color:#fff;text-align:center;font-size:16px;font-weight:800;outline:none}
-.quicks{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
-.quicks button{background:#23304e;border:none;color:#aab8d6;padding:7px;border-radius:8px;font-size:12px;font-weight:700}
-.betBtn{width:100%;margin-top:10px;border:none;border-radius:26px;padding:15px 0;font-weight:900;font-size:16px;color:#fff}
-.green{background:#00c74d;box-shadow:0 4px 0 #00963a}
-.orange{background:#ff9f00;box-shadow:0 4px 0 #c77c00;animation:pop 0.6s infinite alternate}
+#plane{position:absolute;z-index:2;font-size:18px;left:5px}
+#center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;z-index:3;width:100%}
+#mult{font-size:38px;font-weight:900} /* SMALL NOW */
+#flew{color:#ff3b3b;display:none;font-size:14px;font-weight:800}
+.bets{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:5px;background:#0d111c} /* 2 COLUMNS - SEE BOTH */
+.card{background:#1a2236;border-radius:10px;padding:6px;border:1px solid #243150}
+.label{font-size:9px;color:#8a9cc5;display:flex;justify-content:space-between;margin-bottom:4px}
+.inputBox{background:#0f1525;border:1px solid #2a3a5c;border-radius:16px;display:flex;align-items:center;padding:2px}
+.inputBox button{width:22px;height:22px;border-radius:50%;border:none;background:#243150;color:#fff;font-size:12px;font-weight:900}
+.inputBox input{flex:1;background:transparent;border:none;color:#fff;text-align:center;font-size:13px;font-weight:800;outline:none;width:10px}
+.quicks{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:4px}
+.quicks button{background:#23304e;border:none;color:#aab8d6;padding:4px;border-radius:5px;font-size:9px;font-weight:700}
+.betBtn{width:100%;margin-top:5px;border:none;border-radius:18px;padding:8px 0;font-weight:900;font-size:12px;color:#fff}
+.green{background:#00c74d}
+.orange{background:#ff9f00}
 .grey{background:#2a395a;color:#6e7ea0}
-@keyframes pop{from{transform:scale(1)}to{transform:scale(1.03)}}
+.hint{font-size:8px;color:#ff9f00;text-align:center;margin-top:2px}
 </style>
 </head>
 <body>
-<div class="top"><b>AVIATOR <i>✈</i> <span class="demo-badge">DEMO</span></b><div class="bal">UGX <span id="bal">100,000</span> <span style="font-size:10px;color:#8a9cc5"> FUN</span></div></div>
+<div class="top"><b style="font-size:14px">AVIATOR ✈ <span style="background:#ff9f00;color:#000;padding:1px 5px;border-radius:3px;font-size:8px">DEMO</span></b><div class="bal">UGX <span id="bal">100,000</span></div></div>
 <div class="hist" id="hist"></div>
-<div id="game">
-<canvas id="cv"></canvas>
-<div id="plane">✈️</div>
-<div id="center"><div id="mult">1.00x</div><div id="flew">FLEW AWAY!</div></div>
-</div>
+<div id="game"><canvas id="cv"></canvas><div id="plane">✈️</div><div id="center"><div id="mult">1.00x</div><div id="flew">FLEW AWAY!</div></div></div>
 
 <div class="bets">
 <div class="card">
-<div class="label"><span>BET 1</span><span style="color:#00e676">● Demo Money</span></div>
-<div class="inputBox"><button onclick="ch(1,-500)">−</button><input id="s1" value="1000" type="number" oninput="upd()"><button onclick="ch(1,500)">+</button></div>
-<div class="quicks"><button onclick="setS(1,1000)">1,000</button><button onclick="setS(1,2000)">2,000</button><button onclick="setS(1,5000)">5,000</button><button onclick="setS(1,10000)">10,000</button></div>
-<button id="b1" class="betBtn green" onclick="bet(1)">BET<br><span id="b1t" style="font-size:13px;font-weight:600">1,000 UGX</span></button>
+<div class="label"><span>BET 1</span><span style="color:#00e676">● Stake</span></div>
+<div class="inputBox"><button onclick="ch(1,-100)">−</button><input id="s1" type="number" value="500" min="500" oninput="upd(1)"><button onclick="ch(1,100)">+</button></div>
+<div class="hint">Min 500 UGX - Type yours</div>
+<div class="quicks"><button onclick="setS(1,500)">500</button><button onclick="setS(1,1000)">1K</button><button onclick="setS(1,2000)">2K</button><button onclick="setS(1,5000)">5K</button></div>
+<button id="b1" class="betBtn green" onclick="bet(1)">BET<br><span id="b1t" style="font-size:10px">500 UGX</span></button>
 </div>
 
 <div class="card">
-<div class="label"><span>BET 2</span><span style="color:#00e676">● Demo Money</span></div>
-<div class="inputBox"><button onclick="ch(2,-500)">−</button><input id="s2" value="2000" type="number" oninput="upd()"><button onclick="ch(2,500)">+</button></div>
-<div class="quicks"><button onclick="setS(2,1000)">1,000</button><button onclick="setS(2,2000)">2,000</button><button onclick="setS(2,5000)">5,000</button><button onclick="setS(2,10000)">10,000</button></div>
-<button id="b2" class="betBtn green" onclick="bet(2)">BET<br><span id="b2t" style="font-size:13px;font-weight:600">2,000 UGX</span></button>
+<div class="label"><span>BET 2</span><span style="color:#00e676">● Stake</span></div>
+<div class="inputBox"><button onclick="ch(2,-100)">−</button><input id="s2" type="number" value="500" min="500" oninput="upd(2)"><button onclick="ch(2,100)">+</button></div>
+<div class="hint">Min 500 UGX - Type yours</div>
+<div class="quicks"><button onclick="setS(2,500)">500</button><button onclick="setS(2,1000)">1K</button><button onclick="setS(2,2000)">2K</button><button onclick="setS(2,5000)">5K</button></div>
+<button id="b2" class="betBtn green" onclick="bet(2)">BET<br><span id="b2t" style="font-size:10px">500 UGX</span></button>
 </div>
 </div>
 
-<div style="text-align:center;padding:10px;color:#4a5a7a;font-size:11px">This is a FUN DEMO - No real money - Play for fun only<br>Jonathan Mentor © 2026</div>
+<div style="text-align:center;padding:6px;color:#4a5a7a;font-size:9px">FUN DEMO - You type stake from 500<br>Jonathan Mentor</div>
 
 <script>
 let bal=100000, mult=1, flying=false, crash=2, pts=[];
-let cv=document.getElementById('cv'), ctx=cv.getContext('2d');
-let plane=document.getElementById('plane'), multEl=document.getElementById('mult'), flew=document.getElementById('flew'), hist=document.getElementById('hist');
+let cv=document.getElementById('cv'), ctx=cv.getContext('2d'), plane=document.getElementById('plane'), multEl=document.getElementById('mult'), flew=document.getElementById('flew'), hist=document.getElementById('hist');
 let s1=document.getElementById('s1'), s2=document.getElementById('s2'), b1=document.getElementById('b1'), b2=document.getElementById('b2'), b1t=document.getElementById('b1t'), b2t=document.getElementById('b2t'), balEl=document.getElementById('bal');
-let B1={stake:1000,placed:false,active:false}, B2={stake:2000,placed:false,active:false};
-function resize(){cv.width=cv.offsetWidth*2; cv.height=cv.offsetHeight*2;} window.onresize=resize; resize();
-function upd(){B1.stake=parseInt(s1.value)||0; B2.stake=parseInt(s2.value)||0; b1t.innerText=B1.stake.toLocaleString()+' UGX'; b2t.innerText=B2.stake.toLocaleString()+' UGX';}
-function ch(n,d){let el=n==1?s1:s2; let v=(parseInt(el.value)||0)+d; if(v<500) v=500; el.value=v; upd();}
-function setS(n,v){(n==1?s1:s2).value=v; upd();}
-function draw(){ctx.clearRect(0,0,cv.width,cv.height); if(pts.length<2) return; ctx.beginPath(); ctx.strokeStyle='#ff1a1a'; ctx.lineWidth=6; ctx.lineCap='round'; ctx.moveTo(pts[0].x,pts[0].y); for(let i=1;i<pts.length;i++) ctx.lineTo(pts[i].x,pts[i].y); ctx.stroke(); ctx.lineTo(pts[pts.length-1].x,cv.height); ctx.lineTo(pts[0].x,cv.height); ctx.closePath(); let g=ctx.createLinearGradient(0,0,0,cv.height); g.addColorStop(0,'rgba(255,26,26,0.35)'); g.addColorStop(1,'rgba(255,26,26,0)'); ctx.fillStyle=g; ctx.fill();}
-function addH(m){let s=document.createElement('span'); s.innerText=m.toFixed(2)+'x'; s.style.color=m<2?'#ff4d4d':m<10?'#7aa3ff':'#00e676'; hist.prepend(s); if(hist.children.length>30) hist.lastChild.remove();}
-function bet(n){let B=n==1?B1:B2, btn=n==1?b1:b2; if(!flying&&!B.placed){if(B.stake>bal) return alert('Not enough FUN money! Click to reset'); bal-=B.stake; balEl.innerText=bal.toLocaleString(); B.placed=true; btn.className='betBtn grey'; btn.innerHTML='WAITING<br><span style="font-size:11px">NEXT ROUND</span>';} else if(flying&&B.placed&&B.active){let win=B.stake*mult; bal+=win; balEl.innerText=bal.toLocaleString(); B.placed=false; B.active=false; btn.className='betBtn green'; btn.innerHTML=`BET<br><span style="font-size:13px;font-weight:600">${B.stake.toLocaleString()} UGX</span>`; addH(mult);}}
-function start(){mult=1; flying=true; pts=[]; flew.style.display='none'; multEl.style.color='#fff'; crash=Math.random()<0.1?1.05+Math.random()*0.8:1.2+Math.pow(Math.random(),1.7)*30; let t0=Date.now(), w=cv.width, h=cv.height; function loop(){if(!flying) return; let e=(Date.now()-t0)/1000; mult=1+e*0.5+Math.pow(e,1.9)*0.06; let x=e*0.18*w; let y=h-Math.log(mult)*h*0.32-h*0.12; pts.push({x,y}); if(pts.length>150) pts.shift(); draw(); plane.style.left=(x/2)+'px'; plane.style.top=(y/2)+'px'; multEl.innerText=mult.toFixed(2)+'x'; [B1,B2].forEach((B,i)=>{let btn=i==0?b1:b2; if(B.placed){B.active=true; btn.className='betBtn orange'; btn.innerHTML=`CASHOUT<br><span style="font-size:13px">${(B.stake*mult).toFixed(0).replace(/\\B(?=(\\d{3})+(?!\\d))/g,",")} UGX</span>`;}}); if(mult>=crash){flying=false; multEl.style.color='#ff3b3b'; flew.style.display='block'; B1.placed=false; B1.active=false; B2.placed=false; B2.active=false; b1.className='betBtn green'; b1.innerHTML=`BET<br><span style="font-size:13px">${B1.stake.toLocaleString()} UGX</span>`; b2.className='betBtn green'; b2.innerHTML=`BET<br><span style="font-size:13px">${B2.stake.toLocaleString()} UGX</span>`; if(B1.stake>0||B2.stake>0) {} setTimeout(start,2500); return;} requestAnimationFrame(loop);} loop();} upd(); start();
+let B1={stake:500,placed:false,active:false}, B2={stake:500,placed:false,active:false};
+function resize(){ let r=cv.getBoundingClientRect(); cv.width=r.width; cv.height=r.height; } window.onresize=resize; resize();
+function upd(n){ if(n==1){ B1.stake=parseInt(s1.value)||0; b1t.innerText=(B1.stake||500).toLocaleString()+' UGX'; } else { B2.stake=parseInt(s2.value)||0; b2t.innerText=(B2.stake||500).toLocaleString()+' UGX'; } }
+function ch(n,d){ let el=n==1?s1:s2; let v=(parseInt(el.value)||500)+d; if(v<500) v=500; el.value=v; upd(n); }
+function setS(n,v){ (n==1?s1:s2).value=v; upd(n); }
+function draw(){ ctx.clearRect(0,0,cv.width,cv.height); if(pts.length<2) return; ctx.beginPath(); ctx.strokeStyle='#ff1a1a'; ctx.lineWidth=3; ctx.moveTo(pts[0].x,pts[0].y); for(let i=1;i<pts.length;i++) ctx.lineTo(pts[i].x,pts[i].y); ctx.stroke(); ctx.lineTo(pts[pts.length-1].x,cv.height); ctx.lineTo(pts[0].x,cv.height); ctx.closePath(); ctx.fillStyle='rgba(255,26,26,0.15)'; ctx.fill(); }
+function addH(m){ let s=document.createElement('span'); s.innerText=m.toFixed(2)+'x'; s.style.color=m<2?'#ff4d4d':m<10?'#7aa3ff':'#00e676'; hist.prepend(s); if(hist.children.length>15) hist.lastChild.remove(); }
+function bet(n){ let B=n==1?B1:B2, el=n==1?s1:s2, btn=n==1?b1:b2; let stake=parseInt(el.value); if(!stake||stake<500) return alert('Enter stake Min 500 Boss'); B.stake=stake; if(!flying&&!B.placed){ if(B.stake>bal) return alert('No FUN money'); bal-=B.stake; balEl.innerText=bal.toLocaleString(); B.placed=true; btn.className='betBtn grey'; btn.innerHTML='WAIT'; } else if(flying&&B.placed&&B.active){ let win=B.stake*mult; bal+=win; balEl.innerText=bal.toLocaleString(); B.placed=false; B.active=false; btn.className='betBtn green'; btn.innerHTML=`BET<br><span style="font-size:10px">${B.stake.toLocaleString()} UGX</span>`; addH(mult); } }
+function start(){ mult=1; flying=true; pts=[]; flew.style.display='none'; multEl.style.color='#fff'; crash=Math.random()<0.15?1.05+Math.random()*0.8:1.2+Math.pow(Math.random(),1.5)*10; let t0=Date.now(); function loop(){ if(!flying) return; let e=(Date.now()-t0)/1000; mult=1+e*0.4+Math.pow(e,1.7)*0.03; let w=cv.width,h=cv.height; let x=(e/10)*w*0.7; let y=h - Math.log(mult)*h*0.28 - h*0.18; if(y<5) y=5; pts.push({x,y}); if(pts.length>80) pts.shift(); draw(); plane.style.left=x+'px'; plane.style.top=(y-10)+'px'; multEl.innerText=mult.toFixed(2)+'x'; [B1,B2].forEach((B,i)=>{ let btn=i==0?b1:b2; if(B.placed){ B.active=true; btn.className='betBtn orange'; btn.innerHTML=`CASH<br><span style="font-size:10px">${(B.stake*mult).toFixed(0)} UGX</span>`; }}); if(mult>=crash){ flying=false; multEl.style.color='#ff3b3b'; flew.style.display='block'; B1.placed=false; B1.active=false; B2.placed=false; B2.active=false; b1.className='betBtn green'; b1.innerHTML=`BET<br><span style="font-size:10px">${B1.stake} UGX</span>`; b2.className='betBtn green'; b2.innerHTML=`BET<br><span style="font-size:10px">${B2.stake} UGX</span>`; setTimeout(start,2000); return; } requestAnimationFrame(loop); } loop(); } upd(1); upd(2); start();
 </script>
 </body>
   </html>
