@@ -1,25 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aviator - Jonathan Mentor</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aviator Game</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#0e0e0e;color:white;overflow:hidden}
-.header{background:#1a1a1a;padding:15px;display:flex;justify-content:space-between;align-items:center}
-.balance{background:#2a2a2a;padding:8px 15px;border-radius:20px;color:#00ff88;font-weight:bold}
-.game-area{position:relative;height:55vh;background:linear-gradient(to bottom,#1a1a2e 0%,#16213e 50%,#0f3460 100%);overflow:hidden;border-bottom:3px solid #ff0040}
-#canvas{width:100%;height:100%}
-.multiplier{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:60px;font-weight:bold;color:white;text-shadow:0 0 20px #ff0040}
-.crashed{color:#ff0040 !important;animation:shake 0.5s}
-@keyframes shake{0%,100%{transform:translate(-50%,-50%)}25%{transform:translate(-48%,-50%)}75%{transform:translate(-52%,-50%)}}
-.controls{padding:20px;background:#1a1a1a}
-.bet-box{display:flex;gap:10px;margin-bottom:15px}
-.bet-box input{flex:1;padding:15px;border-radius:10px;border:none;background:#2a2a2a;color:white;font-size:18px;text-align:center}
-.btn{flex:1;padding:18px;border:none;border-radius:12px;font-size:20px;font-weight:bold;cursor:pointer}
-.bet-btn{background:#00c853;color:white}
-.cashout-btn{background:#ff3d00;color:white;display:none}
-.history{display:flex;gap:8px;overflow-x:auto;padding:10px;background:#121212}
-.hist{padding:5px 10px;border-radius:15px;font-size:12px;font-weight:bold}
-.hist.low
+body{margin:0;background:#0e0e0e;color:white;font-family:Arial;text-align:center}
+#game{width:100%;height:60vh;background:#111;position:relative;overflow:hidden;border-bottom:3px solid #333}
+#plane{position:absolute;left:10%;bottom:20%;font-size:40px;transition:all 0.1s}
+#mult{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:60px;font-weight:bold;color:#fff}
+#crashed{color:red;display:none;font-size:40px}
+button{padding:18px 30px;font-size:22px;font-weight:bold;border:none;border-radius:12px;margin:10px}
+#betBtn{background:#00c851;color:white;width:90%}
+#cashBtn{background:orange;color:white;width:90%;display:none}
+input{padding:15px;font-size:20px;width:80%;margin:10px;border-radius:8px}
+.header{padding:15px;background:#1a1a1a}
+.balance{font-size:20px;color:#00c851}
+</style>
+</head>
+<body>
+<div class="header">
+<div>AVIATOR - JONATHAN MENTOR</div>
+<div class="balance">Balance: $<span id="bal">1000</span></div>
+</div>
+<div id="game">
+<div id="mult">1.00x</div>
+<div id="crashed">CRASHED!</div>
+<div id="plane">✈️</div>
+</div>
+<input id="betAmount" type="number" value="10">
+<button id="betBtn" onclick="placeBet()">BET - $10</button>
+<button id="cashBtn" onclick="cashOut()">CASHOUT</button>
+<div id="history" style="padding:10px"></div>
+<script>
+let bal=1000, mult=1, flying=false, bet=0, interval, hasBet=false;
+let plane=document.getElementById('plane');
+let multEl=document.getElementById('mult');
+function placeBet(){
+bet=parseInt(document.getElementById('betAmount').value);
+if(bet>bal)return alert('Low balance');
+if(flying)return;
+bal-=bet; updateBal();
+document.getElementById('betBtn').style.display='none';
+document.getElementById('cashBtn').style.display='inline-block';
+hasBet=true;
+}
+function cashOut(){
+if(!hasBet||!flying)return;
+let win=(bet*mult).toFixed(2);
+bal+=parseFloat(win); updateBal();
+hasBet=false;
+document.getElementById('cashBtn').style.display='none';
+document.getElementById('betBtn').style.display='inline-block';
+document.getElementById('betBtn').innerText='BET - $'+bet;
+document.getElementById('history').innerHTML='WON $'+win+' at '+mult.toFixed(2)+'x<br>'+document.getElementById('history').innerHTML;
+}
+function updateBal(){document.getElementById('bal').innerText=bal.toFixed(2)}
+function startGame(){
+mult=1; flying=true;
+document.getElementById('crashed').style.display='none';
+multEl.style.color='white';
+multEl.innerText='1.00x';
+plane.style.left='10%'; plane.style.bottom='20%';
+let crashPoint=(Math.random()*5+1.1).toFixed(2);
+interval=setInterval(()=>{
+mult+=0.02;
+let p=10+mult*5; let h=20+mult*8;
+plane.style.left=p+'%'; plane.style.bottom=h+'%';
+multEl.innerText=mult.toFixed(2)+'x';
+if(mult>=crashPoint){
+clearInterval(interval); flying=false;
+document.getElementById('crashed').style.display='block';
+multEl.style.color='red';
+hasBet=false;
+document.getElementById('cashBtn').style.display='none';
+document.getElementById('betBtn').style.display='inline-block';
+document.getElementById('betBtn').innerText='BET - $'+document.getElementById('betAmount').value;
+setTimeout(startGame,3000);
+}
+},80);
+}
+startGame();
+</script>
+</body>
+  </html>
