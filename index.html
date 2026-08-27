@@ -1,103 +1,620 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>HATHAN - Aviator</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090d18">
+<title>HATHAN AVIATOR</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #070b14;
+    color: white;
+    min-height: 100vh;
+}
+
+/* TOP HEADER */
+.header {
+    background: linear-gradient(135deg, #101827, #080b13);
+    padding: 18px 16px;
+    border-bottom: 1px solid #242d40;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #ffcc00;
+    text-align: center;
+}
+
+/* NAVIGATION */
+.nav {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 12px;
+    background: #0d1320;
+    border-bottom: 1px solid #242d40;
+}
+
+.nav a {
+    flex-shrink: 0;
+    text-decoration: none;
+    color: #fff;
+    background: #182235;
+    padding: 10px 13px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.nav a.active {
+    background: #ffcc00;
+    color: #000;
+}
+
+/* BALANCE */
+.balance-box {
+    margin: 16px;
+    padding: 17px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #151e2e, #0d1420);
+    border: 1px solid #29364d;
+}
+
+.balance-label {
+    color: #9ca9bd;
+    font-size: 13px;
+}
+
+.balance {
+    font-size: 27px;
+    font-weight: 900;
+    color: #ffcc00;
+    margin-top: 5px;
+}
+
+.add-funds {
+    display: inline-block;
+    margin-top: 12px;
+    background: #20c76a;
+    color: white;
+    padding: 9px 14px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* AVIATOR */
+.aviator {
+    margin: 16px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #101827;
+    border: 1px solid #29364d;
+    box-shadow: 0 10px 35px rgba(0,0,0,.35);
+}
+
+.aviator-title {
+    padding: 18px;
+    font-size: 23px;
+    font-weight: 900;
+    text-align: center;
+    background: linear-gradient(135deg, #171f30, #0c111c);
+}
+
+.flight-area {
+    position: relative;
+    height: 310px;
+    background:
+        radial-gradient(circle at 50% 100%, #19283c 0%, #0c1320 45%, #070b14 100%);
+    overflow: hidden;
+}
+
+/* STARS */
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: .7;
+}
+
+.s1 { left: 10%; top: 20%; }
+.s2 { left: 25%; top: 38%; }
+.s3 { left: 43%; top: 15%; }
+.s4 { left: 60%; top: 31%; }
+.s5 { left: 77%; top: 13%; }
+.s6 { left: 90%; top: 40%; }
+.s7 { left: 15%; top: 65%; }
+.s8 { left: 70%; top: 70%; }
+
+/* FLIGHT LINE */
+.flight-line {
+    position: absolute;
+    width: 150%;
+    height: 3px;
+    left: -20%;
+    bottom: 55px;
+    background: #ffcc00;
+    transform: rotate(-14deg);
+    box-shadow: 0 0 12px #ffcc00;
+}
+
+/* PLANE */
+.plane {
+    position: absolute;
+    font-size: 55px;
+    left: 58%;
+    top: 35%;
+    transform: rotate(-15deg);
+    filter: drop-shadow(0 0 12px rgba(255,204,0,.7));
+}
+
+.multiplier {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 105px;
+    text-align: center;
+    font-size: 58px;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255,255,255,.2);
+}
+
+.status {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    background: #16a85b;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* BET SECTION */
+.bet-section {
+    padding: 18px;
+}
+
+.section-title {
+    color: #c6cfdd;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.stakes {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 7px;
+}
+
+.stake {
+    border: 1px solid #3b485d;
+    background: #182235;
+    color: white;
+    padding: 11px 4px;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.stake:hover,
+.stake.selected {
+    background: #ffcc00;
+    color: #000;
+}
+
+.action-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.bet-button,
+.cashout {
+    flex: 1;
+    border: none;
+    padding: 14px 8px;
+    border-radius: 8px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.bet-button {
+    background: #ffcc00;
+    color: #000;
+}
+
+.cashout {
+    background: #e33b3b;
+    color: white;
+}
+
+/* RECENT FLIGHTS */
+.recent {
+    margin: 16px;
+    background: #101827;
+    border: 1px solid #29364d;
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.recent h2 {
+    font-size: 20px;
+    margin-bottom: 14px;
+}
+
+.flight {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #242d40;
+}
+
+.flight:last-child {
+    border-bottom: none;
+}
+
+.green {
+    color: #22d878;
+    font-weight: bold;
+}
+
+.red {
+    color: #ff5555;
+    font-weight: bold;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    color: #718096;
+    font-size: 11px;
+    padding: 25px 15px;
+}
+
+/* MOBILE */
+@media (max-width: 500px) {
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .aviator-title {
+        font-size: 20px;
+    }
+
+    .flight-area {
+        height: 280px;
+    }
+
+    .multiplier {
+        font-size: 48px;
+    }
+
+    .plane {
+        font-size: 45px;
+    }
+
+    .stakes {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .stake {
+        font-size: 12px;
+    }
+}
+</style>
 </head>
+
 <body>
 
-<header class="banner">
-  <img src="IMG-20260827-WA6354.jpg"
-       onerror="this.src='banner.jpg'"
-       alt="HATHAN">
-
-  <div class="overlay">
-    <div class="top">
-      <div class="logo">HATHAN</div>
-
-      <div class="rbtns">
-        <a href="deposit.html" class="deposit">+ DEPOSIT</a>
-        <a href="withdraw.html" class="withdraw">WITHDRAW</a>
-        <a href="bet.html" class="join">BET NOW</a>
-      </div>
-    </div>
-
-    <div class="banner-menu">
-      <a href="bet.html">⚽ BET</a>
-      <a href="index.html">✈️ AVIATOR</a>
-      <a href="casino.html">🎰 CASINO</a>
-      <a href="deposit.html">💰 WALLET</a>
-    </div>
-  </div>
+<!-- HEADER -->
+<header class="header">
+    <div class="logo">✈️ HATHAN AVIATOR</div>
 </header>
 
-<nav class="tabs">
-  <a href="index.html" class="active">✈️ AVIATOR</a>
-  <a href="bet.html">⚽ FOOTBALL</a>
-  <a href="casino.html">🎰 CASINO</a>
+<!-- NAVIGATION -->
+<nav class="nav">
+    <a href="#">⚽ BET</a>
+    <a href="#" class="active">✈️ AVIATOR</a>
+    <a href="#">🎰 CASINO</a>
+    <a href="#">💰 WALLET</a>
 </nav>
 
-<section class="wallet">
-  <div>
-    <small>AVAILABLE BALANCE</small>
-    <strong><span data-balance>100000</span> UGX</strong>
-  </div>
-  <a href="deposit.html">+ ADD FUNDS</a>
+<!-- BALANCE -->
+<section class="balance-box">
+    <div class="balance-label">AVAILABLE BALANCE</div>
+    <div class="balance" id="balance">1,000,000 UGX</div>
+    <a href="#" class="add-funds">＋ ADD FUNDS</a>
 </section>
 
-<main class="game">
+<!-- AVIATOR GAME -->
+<section class="aviator">
 
-  <div class="game-header">
-    <h2>✈️ HATHAN AVIATOR</h2>
-    <span id="gameStatus">● READY</span>
-  </div>
-
-  <div class="flight">
-
-    <div class="cloud cloud-one"></div>
-    <div class="cloud cloud-two"></div>
-
-    <div id="multiplier">1.00x</div>
-
-    <div id="message">Choose your stake</div>
-
-    <div id="trail"></div>
-
-    <div id="plane">✈️</div>
-  </div>
-
-  <div class="controls">
-
-    <div class="bet-options">
-      <button data-stake="1000">1K</button>
-      <button data-stake="5000">5K</button>
-      <button data-stake="10000">10K</button>
-      <button data-stake="20000">20K</button>
-      <button data-stake="50000">50K</button>
+    <div class="aviator-title">
+        ✈️ HATHAN AVIATOR
     </div>
 
-    <button id="betButton" class="action bet">
-      BET <span id="stakeAmount">1,000</span> UGX
-    </button>
+    <div class="flight-area">
 
-    <button id="cashButton" class="action cash">
-      CASH OUT
-    </button>
+        <div class="star s1"></div>
+        <div class="star s2"></div>
+        <div class="star s3"></div>
+        <div class="star s4"></div>
+        <div class="star s5"></div>
+        <div class="star s6"></div>
+        <div class="star s7"></div>
+        <div class="star s8"></div>
 
-  </div>
-</main>
+        <div class="status" id="status">READY</div>
 
-<section class="history">
-  <h3>RECENT FLIGHTS</h3>
-  <div id="historyList"></div>
+        <div class="multiplier" id="multiplier">
+            1.00x
+        </div>
+
+        <div class="plane">
+            ✈️
+        </div>
+
+        <div class="flight-line"></div>
+
+    </div>
+
+    <!-- BET CONTROLS -->
+    <div class="bet-section">
+
+        <div class="section-title">
+            CHOOSE YOUR STAKE
+        </div>
+
+        <div class="stakes">
+
+            <button class="stake" onclick="selectStake(1000, this)">
+                1K
+            </button>
+
+            <button class="stake" onclick="selectStake(5000, this)">
+                5K
+            </button>
+
+            <button class="stake" onclick="selectStake(10000, this)">
+                10K
+            </button>
+
+            <button class="stake" onclick="selectStake(20000, this)">
+                20K
+            </button>
+
+            <button class="stake" onclick="selectStake(50000, this)">
+                50K
+            </button>
+
+        </div>
+
+        <div class="action-row">
+
+            <button class="bet-button" onclick="placeBet()">
+                BET <span id="betAmount">1,000</span> UGX
+            </button>
+
+            <button class="cashout" onclick="cashOut()">
+                CASH OUT
+            </button>
+
+        </div>
+
+    </div>
+
 </section>
 
-<footer>
-  Practice-credit simulation only. No real-money deposits or withdrawals.
-</footer>
+<!-- RECENT FLIGHTS -->
+<section class="recent">
 
-<script src="script.js"></script>
+    <h2>RECENT FLIGHTS</h2>
+
+    <div id="recentFlights">
+
+        <div class="flight">
+            <span>Previous flight</span>
+            <span class="green">2.45x</span>
+        </div>
+
+        <div class="flight">
+            <span>Previous flight</span>
+            <span class="red">1.08x</span>
+        </div>
+
+        <div class="flight">
+            <span>Previous flight</span>
+            <span class="green">4.72x</span>
+        </div>
+
+    </div>
+
+</section>
+
+<div class="footer">
+    Practice-credit simulation only. No real-money deposits or withdrawals.
+</div>
+
+<script>
+
+let balance = 1000000;
+let selectedStake = 1000;
+
+let running = false;
+let cashedOut = false;
+let currentMultiplier = 1.00;
+let timer = null;
+
+function updateBalance() {
+    document.getElementById("balance").textContent =
+        balance.toLocaleString() + " UGX";
+}
+
+function selectStake(amount, button) {
+
+    selectedStake = amount;
+
+    document.querySelectorAll(".stake").forEach(btn => {
+        btn.classList.remove("selected");
+    });
+
+    button.classList.add("selected");
+
+    document.getElementById("betAmount").textContent =
+        amount.toLocaleString();
+}
+
+function placeBet() {
+
+    if (running) {
+        return;
+    }
+
+    if (selectedStake > balance) {
+        alert("Insufficient practice balance.");
+        return;
+    }
+
+    balance -= selectedStake;
+    updateBalance();
+
+    running = true;
+    cashedOut = false;
+    currentMultiplier = 1.00;
+
+    document.getElementById("status").textContent = "FLYING";
+    document.getElementById("status").style.background = "#ff9f00";
+
+    document.getElementById("multiplier").textContent = "1.00x";
+
+    timer = setInterval(() => {
+
+        currentMultiplier += 0.01 +
+            Math.random() * 0.06;
+
+        document.getElementById("multiplier").textContent =
+            currentMultiplier.toFixed(2) + "x";
+
+        /*
+        Practice simulation:
+        The flight ends randomly.
+        */
+
+        if (Math.random() < 0.012) {
+            crash();
+        }
+
+    }, 150);
+
+}
+
+function cashOut() {
+
+    if (!running) {
+        alert("Start a flight first.");
+        return;
+    }
+
+    if (cashedOut) {
+        return;
+    }
+
+    cashedOut = true;
+
+    let winnings =
+        Math.floor(selectedStake * currentMultiplier);
+
+    balance += winnings;
+
+    updateBalance();
+
+    document.getElementById("status").textContent =
+        "CASHED OUT";
+
+    document.getElementById("status").style.background =
+        "#16a85b";
+
+    addRecentFlight(
+        currentMultiplier.toFixed(2) + "x",
+        "green"
+    );
+}
+
+function crash() {
+
+    clearInterval(timer);
+
+    running = false;
+
+    document.getElementById("status").textContent =
+        "CRASHED";
+
+    document.getElementById("status").style.background =
+        "#d83232";
+
+    if (!cashedOut) {
+
+        addRecentFlight(
+            currentMultiplier.toFixed(2) + "x",
+            "red"
+        );
+
+    }
+
+    setTimeout(() => {
+
+        document.getElementById("status").textContent =
+            "READY";
+
+        document.getElementById("status").style.background =
+            "#16a85b";
+
+        document.getElementById("multiplier").textContent =
+            "1.00x";
+
+    }, 2000);
+
+}
+
+function addRecentFlight(value, className) {
+
+    const container =
+        document.getElementById("recentFlights");
+
+    const flight =
+        document.createElement("div");
+
+    flight.className = "flight";
+
+    flight.innerHTML =
+        "<span>Latest flight</span>" +
+        "<span class='" + className + "'>" +
+        value +
+        "</span>";
+
+    container.prepend(flight);
+
+}
+
+updateBalance();
+
+</script>
+
 </body>
-            </html>
+  </html￼Enter
