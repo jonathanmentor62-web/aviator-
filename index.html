@@ -7,54 +7,67 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#080a14;color:white;font-family:Arial}
-.banner{background:#000;padding:12px;text-align:center;border-bottom:2px solid #ff0000}
-.banner h1{color:#ff0000;font-size:32px;font-weight:900;font-style:italic}
-.top-links{background:#111;padding:8px;display:flex;justify-content:center;gap:6px;flex-wrap:wrap;font-size:12px}
-.top-links a{color:#aaa;text-decoration:none;padding:6px 12px;border:1px solid #333;border-radius:20px}
-.btns{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:4px}
-.btns a{padding:5px 10px;border-radius:4px;font-weight:bold;font-size:11px;text-decoration:none;text-align:center}
-.depo{background:#ffcc00;color:#000}.with{background:#222;color:white;border:1px solid #555}.join{background:#ff0000;color:white}
-.nav{background:#1a1d2e;padding:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-.nav a{padding:8px 18px;border-radius:20px;text-decoration:none;font-weight:bold;font-size:13px}
-.nav-avi{background:#ffcc00;color:#000}.nav-bet{background:#00aaff;color:white}.nav-live{background:#00ff00;color:#000}.nav-casino{background:#ff0000;color:white}
-.box{margin:10px;background:#171a2a;border-radius:12px;padding:20px;text-align:center}
+.banner{width:100%;position:relative;background:#000}
+.banner img{width:100%;display:block;max-height:220px;object-fit:cover}
+.banner-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to bottom,rgba(0,0,0,0.2),rgba(0,0,0,0.9));display:flex;flex-direction:column;justify-content:space-between;padding:10px}
+.top-bar{display:flex;justify-content:space-between;align-items:center}
+.logo{color:#ff0000;font-size:28px;font-weight:900;font-style:italic;text-shadow:0 0 10px black}
+.top-btns{display:flex;flex-direction:column;gap:4px}
+.top-btns a{padding:5px 12px;border-radius:4px;font-weight:bold;font-size:11px;text-decoration:none;text-align:center}
+.depo{background:#ffcc00;color:#000}.with{background:rgba(0,0,0,0.7);color:white;border:1px solid #fff}.join{background:#ff0000;color:white}
+.menu-row{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.menu-row a{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:bold;text-decoration:none;border:1px solid rgba(255,255,255,0.3);backdrop-filter:blur(5px)}
+.m-bet{background:rgba(0,170,255,0.9);color:white}.m-live{background:rgba(0,255,0,0.9);color:#000}.m-casino{background:rgba(255,0,0,0.9);color:white}.m-depo{background:rgba(255,204,0,0.9);color:#000}.m-join{background:rgba(255,0,0,0.9);color:white;border-color:#ff0000}
+.nav2{background:#1a1d2e;padding:10px;display:flex;gap:8px;justify-content:center}
+.nav2 a{padding:8px 18px;border-radius:20px;font-weight:bold;font-size:13px;text-decoration:none}
+.nav-avi{background:#ffcc00;color:#000}.nav-foot{background:#00aaff;color:white}.nav-cas{background:#ff0000;color:white}
+.box{margin:10px;background:#171a2a;border-radius:12px;padding:20px;text-align:center;border:1px solid #333}
 .mult{font-size:55px;color:#ffcc00;font-weight:bold}
+.btn{padding:14px;width:100%;background:#00d632;color:#000;font-weight:bold;border:none;border-radius:8px;font-size:16px}
 </style>
 </head>
 <body>
-<div style="position:relative">
-<div class="banner"><h1>HATHAN</h1></div>
-<div class="btns">
+
+<div class="banner">
+<img src="IMG-20260827-WA6354.jpg" alt="HATHAN Banner">
+<div class="banner-overlay">
+<div class="top-bar">
+<div class="logo">HATHAN</div>
+<div class="top-btns">
 <a href="deposit.html" class="depo">+ DEPOSIT</a>
 <a href="withdraw.html" class="with">WITHDRAW</a>
 <a href="join.html" class="join">JOIN NOW</a>
 </div>
 </div>
-<div class="top-links">
-<a href="bet.html">⚽ BET</a>
-<a href="live.html">🔴 LIVE SPORTS</a>
-<a href="casino.html">🎰 CASINO</a>
-<a href="deposit.html">💰 DEPOSIT</a>
-<a href="withdraw.html">💸 WITHDRAW</a>
-<a href="join.html" style="background:#ff0000;color:white">🔐 JOIN NOW</a>
+<div class="menu-row">
+<a href="bet.html" class="m-bet">⚽ BET</a>
+<a href="live.html" class="m-live">🔴 LIVE SPORTS</a>
+<a href="casino.html" class="m-casino">🎰 CASINO</a>
+<a href="deposit.html" class="m-depo">💰 DEPOSIT</a>
+<a href="join.html" class="m-join">🔐 JOIN NOW</a>
 </div>
-<div class="nav">
+</div>
+</div>
+
+<div class="nav2">
 <a href="index.html" class="nav-avi">✈️ AVIATOR</a>
-<a href="bet.html" class="nav-bet">⚽ FOOTBALL</a>
-<a href="casino.html" class="nav-casino">🎰 CASINO</a>
+<a href="bet.html" class="nav-foot">⚽ FOOTBALL</a>
+<a href="casino.html" class="nav-cas">🎰 CASINO</a>
 </div>
+
 <div class="box">
 <h2 style="color:#ffcc00">✈️ HATHAN AVIATOR</h2>
 <div class="mult" id="m">1.00x</div>
-<div style="font-size:40px" id="pl">✈️</div>
-<button id="b" style="padding:14px;width:100%;background:#00d632;border:none;border-radius:8px;font-weight:bold" onclick="go()">BET 1000 UGX</button>
-<button id="c" style="padding:14px;width:100%;background:#ff2222;color:white;border:none;border-radius:8px;font-weight:bold;display:none" onclick="out()">CASHOUT</button>
-<p id="s" style="margin-top:10px;color:#888">Welcome to HATHAN</p>
+<div style="font-size:45px" id="pl">✈️</div>
+<button id="b" class="btn" onclick="go()">BET 1000 UGX</button>
+<button id="c" class="btn" style="background:#ff2222;color:white;display:none" onclick="out()">CASHOUT</button>
+<p id="s" style="margin-top:10px;color:#888">Welcome to HATHAN - Your Banner is Back!</p>
 </div>
+
 <script>
 let p=false,cur=1,cr=0,iv;
-function go(){if(p)return;p=true;cur=1;cr=(Math.random()*10+1.2).toFixed(2);b.style.display='none';c.style.display='block';iv=setInterval(()=>{cur+=0.07;m.innerHTML=cur.toFixed(2)+'x';if(cur>=cr){clearInterval(iv);m.innerHTML='💥 '+cur.toFixed(2)+'x';b.style.display='block';c.style.display='none';p=false;}},80);}
-function out(){clearInterval(iv);s.innerHTML='WON '+(cur*1000).toFixed(0)+' UGX';b.style.display='block';c.style.display='none';p=false;}
+function go(){if(p)return;p=true;cur=1;cr=(Math.random()*10+1.2).toFixed(2);b.style.display='none';c.style.display='block';s.innerHTML='Flying... Crash at '+cr+'x';iv=setInterval(()=>{cur+=0.08;m.innerHTML=cur.toFixed(2)+'x';pl.style.transform='translate('+cur*4+'px,-'+cur*2+'px)';if(cur>=cr){clearInterval(iv);m.innerHTML='💥 '+cur.toFixed(2)+'x';pl.innerHTML='💥';b.style.display='block';c.style.display='none';s.innerHTML='Crashed at '+cr+'x!';p=false;setTimeout(()=>{pl.innerHTML='✈️';pl.style.transform='';},1500);}},80);}
+function out(){clearInterval(iv);s.innerHTML='✅ WON '+(cur*1000).toFixed(0)+' UGX at '+cur.toFixed(2)+'x!';b.style.display='block';c.style.display='none';p=false;}
 </script>
 </body>
   </html>
