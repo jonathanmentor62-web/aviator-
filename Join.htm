@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JOIN - HATHAN</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#080a14;color:white;font-family:Arial}
+.h{background:#000;padding:12px;text-align:center;border-bottom:2px solid #ff0000}
+.h h1{color:#ff0000;font-size:28px;font-weight:900;font-style:italic}
+.h a{color:#888;text-decoration:none;font-size:12px}
+.tabs{display:flex;background:#1a1d2e}
+.tab{flex:1;padding:13px;text-align:center;font-weight:bold;border-bottom:3px solid transparent;cursor:pointer;color:#888}
+.tab.active{border-color:#ffcc00;background:#25283d;color:#ffcc00}
+.form{padding:18px}
+input{width:100%;padding:12px;margin:6px 0;background:#1a1d2e;border:1px solid #333;border-radius:8px;color:white}
+button{width:100%;padding:13px;border:none;border-radius:8px;font-weight:900;margin-top:8px;font-size:14px}
+.b1{background:#ffcc00;color:#000}
+.b2{background:#00aaff;color:white}
+.bonus{background:linear-gradient(90deg,#ffcc00,#ff8800);color:#000;padding:10px;border-radius:8px;text-align:center;font-weight:900;margin:10px 0}
+</style>
+</head>
+<body>
+<div class="h"><h1>HATHAN</h1><a href="index.html">← Back to Home</a></div>
+<div class="tabs"><div class="tab active" onclick="sh('l',this)">LOGIN</div><div class="tab" onclick="sh('r',this)">REGISTER</div></div>
+<div id="l" class="form">
+<div class="bonus">🎉 WELCOME BONUS 100% UP TO 200K UGX!</div>
+<h3 style="color:#ffcc00">Welcome Back!</h3>
+<input placeholder="📱 Phone Number" id="lp">
+<input type="password" placeholder="🔒 Password" id="lpass">
+<button class="b1" onclick="if(lp.value&&lpass.value){alert('✅ Welcome Back! Logged in as '+lp.value+'\n\nBalance: 0 UGX\nBonus: 100% Active!')}else{alert('Enter phone & password')}">LOGIN</button>
+<p style="text-align:center;margin-top:12px;font-size:11px"><a href="#" style="color:#00aaff;text-decoration:none">Forgot Password?</a> • <a href="#" onclick="sh('r',document.querySelectorAll('.tab')[1]);return false" style="color:#ffcc00;text-decoration:none">Create Account</a></p>
+<p style="text-align:center;margin-top:8px;font-size:10px;color:#666">🔒 Secure • 💸 Instant Withdraw • 🎁 Bonus • 🇺🇬 Uganda #1</p>
+</div>
+<div id="r" class="form" style="display:none">
+<div class="bonus">🎁 REGISTER & GET 100% BONUS + FREE BET!</div>
+<h3 style="color:#00aaff">Create Account</h3>
+<input placeholder="👤 Full Name">
+<input placeholder="📱 Phone 07XXXXXXXX" id="rp">
+<input type="password" placeholder="🔒 Create Password" id="rpass">
+<input type="password" placeholder="🔒 Confirm Password">
+<button class="b2" onclick="if(rp.value&&rpass.value){alert('✅ Account Created for '+rp.value+'!\n\n🎉 BONUS: 100% up to 200K UGX Activated!\n🎁 FREE BET: 5000 UGX credited!\n\nWelcome to HATHAN!')}else{alert('Fill all fields!')}">REGISTER NOW</button>
+<p style="text-align:center;margin-top:8px;color:#ffcc00;font-size:11px;font-weight:bold">🎉 100% Welcome Bonus + Free Bet 5000 UGX!</p>
+<p style="text-align:center;margin-top:5px;font-size:9px;color:#666">By registering you agree to Terms • Must be 18+ • Play Responsibly</p>
+</div>
+<script>function sh(id,el){document.getElementById('l').style.display=id=='l'?'block':'none';document.getElementById('r').style.display=id=='r'?'block':'none';document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');}</script>
+</body>
+</html>
