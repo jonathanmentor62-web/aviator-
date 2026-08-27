@@ -1,54 +1,47 @@
-<!DOCTYPE html>
+here<!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>JONATHAN AVIATOR</title>
+<link rel="manifest" href="manifest.json">
 <style>
-body{margin:0;background:#0a0a0a;color:white;font-family:Arial}
-.top-banner{width:100%;background:#000;position:relative}
-.top-banner img{width:100%;display:block}
-.nav-text{position:absolute;bottom:25%;left:50%;transform:translateX(-50%);display:flex;gap:15px;background:rgba(0,0,0,0.8);padding:8px 15px;border-radius:20px;font-size:13px;font-weight:bold;white-space:nowrap}
-.nav-text a{color:#aaa;text-decoration:none}
-.nav-text a:hover{color:#ff0000}
-.section{margin:15px;padding:25px;background:#1a1a1a;border-radius:15px;text-align:center}
-.bet-btn{padding:15px 30px;border:none;border-radius:10px;font-weight:bold;font-size:16px;cursor:pointer;width:90%}
+body{margin:0;background:#0a0e1a;color:white;font-family:Arial;text-align:center}
+.banner{width:100%;background:#000}
+.banner img{width:100%;display:block}
+.links{padding:12px;background:#111;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;font-weight:bold;font-size:13px}
+.links a{color:#aaa;text-decoration:none;padding:7px 14px;border:1px solid #333;border-radius:20px}
+.links a:hover{color:#fff;background:#ff0000;border-color:#ff0000}
+.game{margin:15px;padding:20px;background:#1a1a2e;border-radius:15px;border:2px solid #ffcc00}
+.multiplier{font-size:60px;font-weight:bold;color:#ffcc00;margin:15px 0}
+.btn{padding:15px 30px;font-size:18px;font-weight:bold;border:none;border-radius:10px;cursor:pointer;width:95%;max-width:300px;margin:8px}
+.section{margin:15px;padding:25px;background:#1a1a1a;border-radius:15px}
 </style>
 </head>
 <body>
-
-<div class="top-banner">
-<img src="IMG-20260827-WA6354.jpg" alt="Jonathan Aviator">
-<div class="nav-text">
-<a href="#bet">BET</a> • 
-<a href="#live">LIVE SPORTS</a> • 
-<a href="#casino">CASINO</a> • 
-<a href="#virtual">VIRTUAL GAMES</a>
+<div class="banner"><img src="IMG-20260827-WA6354.jpg"></div>
+<div class="links">
+<a href="#bet">⚽ BET</a>
+<a href="#live">🔴 LIVE SPORTS</a>
+<a href="#casino">🎰 CASINO</a>
+<a href="#virtual">🎮 VIRTUAL GAMES</a>
 </div>
+<div class="game">
+<h2>✈️ JONATHAN AVIATOR</h2>
+<div class="multiplier" id="mult">1.00x</div>
+<button class="btn" style="background:#00ff00;color:#000" id="betBtn" onclick="startGame()">BET - 1000 UGX</button>
+<button class="btn" style="background:#ff0000;color:white;display:none" id="cashBtn" onclick="cashout()">CASHOUT</button>
+<p id="status">Set BET and fly!</p>
 </div>
-
-<div id="bet" class="section">
-<h2 style="color:#ff0000">⚽ BET</h2>
-<p>Best odds on Football, Basketball & Tennis</p>
-<button class="bet-btn" style="background:#ff0000;color:white">PLACE BET</button>
-</div>
-
-<div id="live" class="section">
-<h2 style="color:#00ff00">🔴 LIVE SPORTS</h2>
-<p>Live betting - Bet while match is playing!</p>
-<button class="bet-btn" style="background:#00ff00;color:black">BET LIVE</button>
-</div>
-
-<div id="casino" class="section">
-<h2 style="color:#ffcc00">🎰 CASINO</h2>
-<p>Aviator, Slots, Roulette - Win Big!</p>
-<button class="bet-btn" style="background:#ffcc00;color:black">PLAY CASINO</button>
-</div>
-
-<div id="virtual" class="section">
-<h2 style="color:#00aaff">🎮 VIRTUAL GAMES</h2>
-<p>Virtual Football & Racing - Every 3 min!</p>
-<button class="bet-btn" style="background:#00aaff;color:white">PLAY VIRTUAL</button>
-</div>
-
+<div id="bet" class="section"><h2 style="color:#ff0000">⚽ BET</h2><p>Best odds on Football!</p></div>
+<div id="live" class="section"><h2 style="color:#00ff00">🔴 LIVE SPORTS</h2><p>Live betting!</p></div>
+<div id="casino" class="section"><h2 style="color:#ffcc00">🎰 CASINO</h2><p>Aviator & Slots</p></div>
+<div id="virtual" class="section"><h2 style="color:#00aaff">🎮 VIRTUAL GAMES</h2><p>Virtual Football - Every 3 min!</p></div>
+<script>
+let playing=false,curr=1.00,crash=0,intv;
+function startGame(){if(playing)return;playing=true;curr=1.00;crash=(Math.random()*8+1.2).toFixed(2);document.getElementById('betBtn').style.display='none';document.getElementById('cashBtn').style.display='inline-block';document.getElementById('status').innerHTML='Flying... Crash at '+crash+'x';intv=setInterval(()=>{curr+=0.05;document.getElementById('mult').innerHTML=curr.toFixed(2)+'x';if(curr>=crash){clearInterval(intv);document.getElementById('mult').innerHTML='💥 CRASH '+curr.toFixed(2)+'x';document.getElementById('status').innerHTML='Crashed!';document.getElementById('betBtn').style.display='inline-block';document.getElementById('cashBtn').style.display='none';playing=false;}},100);}
+function cashout(){if(!playing)return;clearInterval(intv);document.getElementById('status').innerHTML='✅ Won '+(curr*1000).toFixed(0)+' UGX!';document.getElementById('betBtn').style.display='inline-block';document.getElementById('cashBtn').style.display='none';playing=false;}
+document.querySelectorAll('a[href^=\"#\"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'})})});
+</script>
 </body>
   </html>
