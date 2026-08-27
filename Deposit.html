@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DEPOSIT - HATHAN</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#080a14;color:white;font-family:Arial}
+.h{background:#000;padding:10px;display:flex;justify-content:space-between}
+.h h1{color:#ff0000;font-style:italic;font-size:22px}
+.h a{color:#ffcc00;text-decoration:none;font-size:12px}
+.box{margin:12px;background:#171a2a;padding:18px;border-radius:12px}
+.mtn{background:#ffcc00;color:#000;padding:12px;border-radius:10px;display:flex;justify-content:space-between;margin:10px 0;font-weight:bold}
+.airtel{background:#ff0000;color:white;padding:12px;border-radius:10px;display:flex;justify-content:space-between;margin:10px 0;font-weight:bold}
+input{width:100%;padding:12px;margin:7px 0;background:#0f111f;border:1px solid #333;border-radius:8px;color:white}
+button{width:100%;padding:13px;background:#ffcc00;color:#000;border:none;border-radius:8px;font-weight:900;margin-top:8px}
+.bal{background:#1a1d2e;padding:10px;border-radius:8px;text-align:center;margin-bottom:10px;border:1px solid #333}
+</style>
+</head>
+<body>
+<div class="h"><a href="index.html">← HOME</a><h1>HATHAN DEPOSIT</h1><span></span></div>
+<div class="box">
+<div class="bal"><small style="color:#888">Your Balance</small><br><b style="font-size:22px;color:#00ff00">0 UGX</b><br><small style="color:#ffcc00">🎁 Get 100% Bonus on first deposit!</small></div>
+<h3>💰 Choose Method - Uganda</h3>
+<div class="mtn"><div>MTN Mobile Money<br><small>Instant • 0% Fee • 24/7</small></div><b>MTN</b></div>
+<div class="airtel"><div>Airtel Money<br><small>Instant • 0% Fee • 24/7</small></div><b>AIRTEL</b></div>
+<hr style="margin:12px 0;border-color:#333">
+<input placeholder="📱 Phone Number: 07XXXXXXXX" id="ph">
+<input placeholder="💵 Amount: Min 1000 UGX" type="number" id="am">
+<button onclick="if(ph.value&&am.value){alert('✅ DEPOSIT REQUEST: '+am.value+' UGX to '+ph.value+'\n\nCheck your phone and enter PIN to confirm!\n\nBonus: '+(am.value*1)+' UGX will be added!')}else{alert('⚠️ Enter phone and amount!')}">DEPOSIT NOW</button>
+<p style="margin-top:10px;font-size:10px;color:#888;text-align:center">Min 1000 UGX • Max 5,000,000 UGX • Instant • Need help? Call 0800 123 456<br>Secure by HATHAN 🔒</p>
+</div>
+</body>
+</html>
