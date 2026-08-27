@@ -1,69 +1,995 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>JONATHAN AVIATOR</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HATHAN</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#0a0e1a;color:#fff;font-family:Arial}
-.banner{width:100%;height:135px;background:#000 url('IMG-20260827-WA8619.jpg') center/cover no-repeat;border-bottom:3px solid #d4af37}
-.hero{background:linear-gradient(#1a3c0a,#0e1e08);padding:14px;text-align:center}
-.hero h1{color:#ffcc00;font-size:18px}
-.momo{background:#000;color:#ffcc00;padding:8px 18px;border-radius:20px;font-weight:bold;display:inline-block;margin:8px;border:1px solid #ffcc00}
-.btn{padding:10px 16px;border-radius:20px;font-weight:bold;border:none;margin:4px;font-size:12px}
-.btn-r{background:#e60000;color:#fff}.btn-w{background:#222;border:1px solid #fff;color:#fff}.btn-j{border:1px solid #d4af37;color:#d4af37;background:#111}
-.card{background:#141e12;margin:10px;border-radius:12px;overflow:hidden}
-.preview{background:radial-gradient(circle,#2a4a1f,#0a0e1a);padding:20px;text-align:center;position:relative;min-height:260px}
-.lock{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:flex;flex-direction:column;justify-content:center;align-items:center}
-.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);display:none;justify-content:center;align-items:center;z-index:9999;padding:15px}
-.box{background:#1a1a1a;border:2px solid #d4af37;border-radius:15px;padding:20px;width:100%;max-width:350px;text-align:center}
-.box input{width:100%;padding:12px;margin:7px 0;background:#0a0e1a;border:1px solid #444;color:#fff;border-radius:8px}
-#realGame{position:fixed;top:0;left:0;width:100%;height:100%;background:#0e141e;z-index:5000;display:none}
-.betrow{display:flex;padding:10px;gap:10px}
-.betrow input{flex:1;padding:12px;background:#0a0e1a;border:1px solid #444;color:#fff;border-radius:8px;text-align:center}
-.betrow button{flex:1;background:#8dc63f;color:#000;border:none;border-radius:8px;font-weight:900}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#070707;
+    color:white;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    height:65px;
+    background:#0b0b0b;
+    border-bottom:1px solid #292929;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:#f5c542;
+}
+
+.balance{
+    background:#f5c542;
+    color:#111;
+    padding:9px 17px;
+    border-radius:22px;
+    font-weight:bold;
+}
+
+/* ================= HERO BANNER ================= */
+
+.hero{
+    width:100%;
+    min-height:300px;
+
+    background-image:
+        linear-gradient(90deg,
+        rgba(0,0,0,.15),
+        rgba(0,0,0,.55)),
+        url("1000006301.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+
+    padding:35px 20px;
+}
+
+.hero-content{
+    background:rgba(0,0,0,.35);
+    padding:25px;
+    border-radius:18px;
+    backdrop-filter:blur(3px);
+}
+
+.hero h1{
+    font-size:55px;
+    letter-spacing:5px;
+    font-weight:900;
+    color:#f5c542;
+    text-shadow:0 4px 15px #000;
+}
+
+.hero p{
+    font-size:18px;
+    margin-top:8px;
+    font-weight:bold;
+}
+
+/* ================= NAVIGATION ================= */
+
+.nav{
+    display:flex;
+    background:#111;
+    border-bottom:1px solid #292929;
+    overflow-x:auto;
+}
+
+.nav button{
+    flex:1;
+    min-width:100px;
+    background:none;
+    color:#aaa;
+    border:0;
+    padding:17px 10px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.nav button.active{
+    color:#f5c542;
+    border-bottom:3px solid #f5c542;
+}
+
+/* ================= CONTENT ================= */
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:18px;
+}
+
+.section-title{
+    margin:15px 0;
+    font-size:21px;
+}
+
+/* ================= AVIATOR ================= */
+
+.game{
+    background:
+        radial-gradient(circle at center,#1d1d1d,#070707 70%);
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid #292929;
+}
+
+.game-top{
+    padding:12px 16px;
+    background:#111;
+    display:flex;
+    justify-content:space-between;
+}
+
+.live{
+    color:#ff3333;
+    font-weight:bold;
+}
+
+.multiplier{
+    text-align:center;
+    font-size:72px;
+    font-weight:900;
+    color:#f5c542;
+    padding-top:35px;
+}
+
+.plane{
+    text-align:center;
+    font-size:70px;
+    animation:flying 2s infinite alternate ease-in-out;
+}
+
+@keyframes flying{
+    from{transform:translate(-20px,5px) rotate(-4deg)}
+    to{transform:translate(20px,-15px) rotate(4deg)}
+}
+
+.status{
+    text-align:center;
+    color:#aaa;
+    padding:12px 0 25px;
+}
+
+/* ================= BET PANEL ================= */
+
+.bet-panel{
+    background:#151515;
+    padding:18px;
+    border-top:1px solid #292929;
+}
+
+.bet-row{
+    display:flex;
+    gap:8px;
+}
+
+.bet-row input{
+    flex:1;
+    min-width:0;
+    background:#080808;
+    color:white;
+    border:1px solid #333;
+    border-radius:9px;
+    padding:13px;
+    font-size:17px;
+}
+
+.small-btn{
+    background:#292929;
+    color:white;
+    border:0;
+    border-radius:9px;
+    padding:0 13px;
+}
+
+.bet-btn{
+    width:100%;
+    margin-top:12px;
+    padding:15px;
+    border:0;
+    border-radius:10px;
+    background:#f5c542;
+    color:#111;
+    font-size:18px;
+    font-weight:900;
+}
+
+.cashout{
+    background:#00c853;
+    color:white;
+}
+
+/* ================= SPORTS ================= */
+
+.matches{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:12px;
+}
+
+.match{
+    background:#151515;
+    border:1px solid #292929;
+    border-radius:12px;
+    padding:15px;
+}
+
+.match-head{
+    color:#999;
+    font-size:12px;
+    margin-bottom:12px;
+}
+
+.teams{
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.odds{
+    display:flex;
+    gap:7px;
+}
+
+.odds button{
+    flex:1;
+    padding:11px 5px;
+    border:0;
+    border-radius:7px;
+    background:#242424;
+    color:#f5c542;
+    font-weight:bold;
+}
+
+/* ================= WALLET ================= */
+
+.wallet{
+    background:linear-gradient(145deg,#181818,#0d0d0d);
+    border:1px solid #292929;
+    border-radius:18px;
+    padding:25px;
+    text-align:center;
+}
+
+.wallet-balance{
+    font-size:38px;
+    color:#f5c542;
+    margin:15px 0 25px;
+}
+
+.wallet-btn{
+    width:100%;
+    padding:14px;
+    margin:6px 0;
+    border:0;
+    border-radius:9px;
+    font-weight:bold;
+    font-size:16px;
+}
+
+.deposit{
+    background:#f5c542;
+}
+
+.withdraw{
+    background:#292929;
+    color:white;
+}
+
+/* ================= LOGIN ================= */
+
+.login{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.93);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+}
+
+.login-box{
+    width:90%;
+    max-width:370px;
+    background:#151515;
+    border:1px solid #f5c542;
+    border-radius:18px;
+    padding:28px;
+}
+
+.login-logo{
+    text-align:center;
+    color:#f5c542;
+    font-size:32px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:8px;
+}
+
+.login-box p{
+    text-align:center;
+    color:#999;
+    margin-bottom:20px;
+}
+
+.login-box input{
+    width:100%;
+    padding:13px;
+    margin:6px 0;
+    border-radius:8px;
+    border:1px solid #333;
+    background:#080808;
+    color:white;
+}
+
+.login-box button{
+    width:100%;
+    padding:14px;
+    margin-top:10px;
+    background:#f5c542;
+    color:#111;
+    border:0;
+    border-radius:8px;
+    font-weight:900;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    text-align:center;
+    padding:30px 15px;
+    color:#666;
+    font-size:12px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+    .header{
+        padding:0 12px;
+    }
+
+    .logo{
+        font-size:21px;
+    }
+
+    .balance{
+        font-size:12px;
+        padding:8px 11px;
+    }
+
+    .hero{
+        min-height:230px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero p{
+        font-size:14px;
+    }
+
+    .multiplier{
+        font-size:55px;
+    }
+
+    .plane{
+        font-size:55px;
+    }
+}
 </style>
 </head>
+
 <body>
-<div class="banner" onclick="openJoin()"></div>
-<div style="background:#111;padding:7px;display:flex;justify-content:center;gap:12px;font-size:11px"><span>SPORTS</span><span style="color:red">LIVE</span><span>CASINO</span><span>PROMOS</span></div>
-<div class="hero">
-<h1>✈️ 300% BONUS - 0794650803</h1>
-<div class="momo">📲 0794650803</div><br>
-<button class="btn btn-r" onclick="openJoin()">+ DEPOSIT</button>
-<button class="btn btn-w" onclick="openJoin()">WITHDRAW</button>
-<button class="btn btn-j" onclick="openJoin()">JOIN NOW</button>
+
+<!-- LOGIN -->
+
+<div class="login" id="login">
+
+    <div class="login-box">
+
+        <div class="login-logo">HATHAN</div>
+
+        <p>Welcome to HATHAN</p>
+
+        <input id="username"
+               type="text"
+               placeholder="Enter your name">
+
+        <input id="password"
+               type="password"
+               placeholder="Password">
+
+        <button onclick="loginUser()">
+            LOGIN / REGISTER
+        </button>
+
+    </div>
+
 </div>
-<div class="card">
-<div style="padding:10px;background:#1f2f1a;display:flex;justify-content:space-between;font-size:12px"><span>✈ AVIATOR</span><span style="color:#8dc63f">● LIVE</span></div>
-<div class="preview" onclick="openJoin()">
-<div id="mult" style="font-size:55px;color:#ffcc00;font-weight:900">1.00x</div><div style="font-size:45px">✈️</div>
-<div class="lock"><p>🔒 LOGIN & DEPOSIT TO PLAY</p><button class="btn btn-r" style="margin-top:10px" onclick="openJoin()">LOGIN TO BET</button><p style="font-size:11px;margin-top:6px">Deposit UGX 2000 to 0794650803</p></div>
-</div>
-<div class="betrow"><input value="1000"><button onclick="openJoin()">BET</button></div>
-</div>
-<div id="joinModal" class="modal"><div class="box">
-<img src="IMG-20260827-WA6354.jpg" style="width:70px;height:70px;border-radius:50%;border:2px solid gold;object-fit:cover">
-<h3 style="color:#ffcc00;margin:10px 0">JOIN NOW</h3>
-<input id="jName" placeholder="Full Name">
-<input id="jPhone" placeholder="Phone">
-<input id="jDep" type="number" placeholder="Amount sent to 0794650803">
-<button onclick="activate()" style="width:100%;padding:13px;background:#e60000;color:#fff;border:none;border-radius:10px;font-weight:bold;margin-top:10px">I DEPOSITED - PLAY NOW</button>
-<button onclick="closeM()" style="width:100%;padding:10px;background:#333;color:#fff;border:none;border-radius:8px;margin-top:8px">CLOSE</button>
-</div></div>
-<div id="realGame">
-<div style="background:#000;padding:12px;display:flex;justify-content:space-between"><span style="color:gold;font-weight:900">JONATHAN AVIATOR</span><div><span id="bal" style="background:#ffcc00;color:#000;padding:5px 12px;border-radius:15px;font-weight:bold">UGX 0</span><button onclick="document.getElementById('realGame').style.display='none'" style="background:#333;color:#fff;border:none;padding:5px 10px;border-radius:10px;margin-left:6px">X</button></div></div>
-<div style="background:radial-gradient(circle,#2a4a1f,#0a0e1a);padding:40px 20px;text-align:center;min-height:340px"><div id="realMult" style="font-size:70px;color:#ffcc00;font-weight:900">1.00x</div><div style="font-size:50px">✈️</div><p id="realStat" style="margin-top:15px">Waiting...</p></div>
-<div class="betrow"><input id="realBet" value="1000" type="number"><button id="realBtn" onclick="playReal()">PLACE BET</button></div>
-</div>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="logo">
+        ✈ <span>HATHAN</span>
+    </div>
+
+    <div id="user">
+        Guest
+    </div>
+
+    <div class="balance" id="balance">
+        UGX 0
+    </div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>HATHAN</h1>
+
+        <p>
+            BET • LIVE SPORTS • CASINO • VIRTUAL GAMES
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- NAVIGATION -->
+
+<nav class="nav">
+
+    <button class="active"
+            onclick="showTab('aviator',this)">
+        ✈ Aviator
+    </button>
+
+    <button onclick="showTab('sports',this)">
+        ⚽ Sports
+    </button>
+
+    <button onclick="showTab('wallet',this)">
+        💰 Wallet
+    </button>
+
+</nav>
+
+
+<!-- MAIN -->
+
+<main class="container">
+
+
+<!-- AVIATOR -->
+
+<section id="aviator">
+
+    <h2 class="section-title">
+        ✈ HATHAN Aviator
+    </h2>
+
+    <div class="game">
+
+        <div class="game-top">
+
+            <span class="live">
+                ● LIVE
+            </span>
+
+            <span>
+                HATHAN
+            </span>
+
+        </div>
+
+        <div id="multiplier"
+             class="multiplier">
+            1.00x
+        </div>
+
+        <div class="plane">
+            ✈️
+        </div>
+
+        <div id="status"
+             class="status">
+            Waiting for next round...
+        </div>
+
+        <div class="bet-panel">
+
+            <div class="bet-row">
+
+                <input id="betAmount"
+                       type="number"
+                       value="1000"
+                       min="100">
+
+                <button class="small-btn"
+                        onclick="changeBet(500)">
+                    +500
+                </button>
+
+                <button class="small-btn"
+                        onclick="changeBet(1000)">
+                    +1K
+                </button>
+
+            </div>
+
+            <button id="betBtn"
+                    class="bet-btn"
+                    onclick="placeBet()">
+
+                PLACE DEMO BET
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SPORTS -->
+
+<section id="sports"
+         style="display:none">
+
+    <h2 class="section-title">
+        ⚽ Today's Matches
+    </h2>
+
+    <div class="matches">
+
+        <div class="match">
+
+            <div class="match-head">
+                PREMIER LEAGUE
+            </div>
+
+            <div class="teams">
+                Manchester City<br>
+                Arsenal
+            </div>
+
+            <div class="odds">
+
+                <button>
+                    1<br>2.10
+                </button>
+
+                <button>
+                    X<br>3.40
+                </button>
+
+                <button>
+                    2<br>3.10
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="match">
+
+            <div class="match-head">
+                CHAMPIONS LEAGUE
+            </div>
+
+            <div class="teams">
+                Real Madrid<br>
+                Barcelona
+            </div>
+
+            <div class="odds">
+
+                <button>
+                    1<br>1.90
+                </button>
+
+                <button>
+                    X<br>3.50
+                </button>
+
+                <button>
+                    2<br>3.80
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="match">
+
+            <div class="match-head">
+                INTERNATIONAL
+            </div>
+
+            <div class="teams">
+                Uganda<br>
+                Kenya
+            </div>
+
+            <div class="odds">
+
+                <button>
+                    1<br>2.00
+                </button>
+
+                <button>
+                    X<br>3.20
+                </button>
+
+                <button>
+                    2<br>3.50
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WALLET -->
+
+<section id="wallet"
+         style="display:none">
+
+    <h2 class="section-title">
+        💰 My Wallet
+    </h2>
+
+    <div class="wallet">
+
+        <p>
+            Demo Balance
+        </p>
+
+        <div class="wallet-balance"
+             id="walletBalance">
+            UGX 0
+        </div>
+
+        <button class="wallet-btn deposit"
+                onclick="demoDeposit()">
+
+            + ADD DEMO CREDITS
+
+        </button>
+
+        <button class="wallet-btn withdraw"
+                onclick="demoWithdraw()">
+
+            WITHDRAW DEMO CREDITS
+
+        </button>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    © 2026 HATHAN<br>
+    Demo interface — no real-money transactions are processed.
+
+</footer>
+
+
 <script>
-let bal=parseInt(localStorage.getItem('bal'))||0;let bet=0;let m=1;let iv;
-function openJoin(){document.getElementById('joinModal').style.display='flex';}
-function closeM(){document.getElementById('joinModal').style.display='none';}
-function activate(){let dep=document.getElementById('jDep').value;let name=document.getElementById('jName').value;if(!name||!dep||dep<2000){alert('Enter name & deposit 2000+ to 0794650803');return}bal+=parseInt(dep);localStorage.setItem('bal',bal);closeM();document.getElementById('realGame').style.display='block';document.getElementById('bal').innerText='UGX '+bal;}
-function playReal(){if(bet>0){let win=Math.floor(bet*m);bal+=win;localStorage.setItem('bal',bal);document.getElementById('bal').innerText='UGX '+bal;clearInterval(iv);alert('WIN UGX '+win);document.getElementById('realBtn').innerText='PLACE BET';bet=0;m=1;document.getElementById('realMult').innerText='1.00x';return;}let amt=parseInt(document.getElementById('realBet').value);if(amt>bal){alert('Low balance! Deposit 0794650803');return}bet=amt;bal-=amt;document.getElementById('bal').innerText='UGX '+bal;document.getElementById('realBtn').innerText='CASHOUT';m=1;iv=setInterval(()=>{m+=0.15;document.getElementById('realMult').innerText=m.toFixed(2)+'x';document.getElementById('realBtn').innerText='CASHOUT '+m.toFixed(2)+'x';if(Math.random()<0.03&&m>1.5){clearInterval(iv);document.getElementById('realStat').innerText='CRASHED '+m.toFixed(2)+'x';document.getElementById('realBtn').innerText='PLACE BET';bet=0;}},100);}
-setInterval(()=>{document.getElementById('mult').innerText=(1+Math.random()*3).toFixed(2)+'x';},1400);
+
+let balance =
+    Number(localStorage.getItem("hathanBalance")) || 10000;
+
+let user =
+    localStorage.getItem("hathanUser");
+
+let bet = 0;
+let multiplier = 1;
+let timer;
+
+
+/* LOGIN */
+
+function loginUser(){
+
+    let name =
+        document.getElementById("username").value.trim();
+
+    if(!name){
+
+        alert("Please enter your name.");
+
+        return;
+    }
+
+    user = name;
+
+    localStorage.setItem(
+        "hathanUser",
+        user
+    );
+
+    document.getElementById("user")
+        .innerText = user;
+
+    document.getElementById("login")
+        .style.display = "none";
+}
+
+
+/* RESTORE USER */
+
+if(user){
+
+    document.getElementById("user")
+        .innerText = user;
+
+    document.getElementById("login")
+        .style.display = "none";
+}
+
+
+/* BALANCE */
+
+function updateBalance(){
+
+    document.getElementById("balance")
+        .innerText =
+        "UGX " + balance.toLocaleString();
+
+    document.getElementById("walletBalance")
+        .innerText =
+        "UGX " + balance.toLocaleString();
+
+    localStorage.setItem(
+        "hathanBalance",
+        balance
+    );
+}
+
+updateBalance();
+
+
+/* TABS */
+
+function showTab(tab,button){
+
+    document.getElementById("aviator")
+        .style.display = "none";
+
+    document.getElementById("sports")
+        .style.display = "none";
+
+    document.getElementById("wallet")
+        .style.display = "none";
+
+    document.querySelectorAll(".nav button")
+        .forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+    document.getElementById(tab)
+        .style.display = "block";
+
+    button.classList.add("active");
+}
+
+
+/* CHANGE BET */
+
+function changeBet(amount){
+
+    let input =
+        document.getElementById("betAmount");
+
+    input.value =
+        Number(input.value) + amount;
+}
+
+
+/* AVIATOR DEMO */
+
+function placeBet(){
+
+    let amount =
+        Number(
+            document.getElementById("betAmount").value
+        );
+
+    if(!amount || amount <= 0){
+
+        alert("Enter a valid demo bet.");
+
+        return;
+    }
+
+    if(bet > 0){
+
+        let win =
+            Math.floor(bet * multiplier);
+
+        balance += win;
+
+        updateBalance();
+
+        clearInterval(timer);
+
+        document.getElementById("status")
+            .innerText =
+            "Demo cashout: UGX " +
+            win.toLocaleString();
+
+        document.getElementById("betBtn")
+            .innerText =
+            "PLACE DEMO BET";
+
+        document.getElementById("betBtn")
+            .classList.remove("cashout");
+
+        bet = 0;
+        multiplier = 1;
+
+        return;
+    }
+
+
+    if(amount > balance){
+
+        alert("Not enough demo credits.");
+
+        return;
+    }
+
+
+    bet = amount;
+
+    balance -= amount;
+
+    updateBalance();
+
+    multiplier = 1;
+
+    document.getElementById("betBtn")
+        .innerText =
+        "CASH OUT";
+
+    document.getElementById("betBtn")
+        .classList.add("cashout");
+
+    document.getElementById("status")
+        .innerText =
+        "Plane flying...";
+
+
+    timer =
+        setInterval(function(){
+
+            multiplier +=
+                0.05 +
+                Math.random() * 0.15;
+
+            document.getElementById("multiplier")
+                .innerText =
+                multiplier.toFixed(2) + "x";
+
+
+            /* DEMO CRASH */
+
+            if(
+                Math.random() < 0.018 &&
+                multiplier > 1.5
+            ){
+
+                clearInterval(timer);
+
+                document.getElementById("status")
+                    .innerText =
+                    "CRASHED at " +
+                    multiplier.toFixed(2) +
+                    "x";
+
+                document.getElementById("betBtn")
+                    .innerText =
+                    "PLACE DEMO BET";
+
+                document.getElementById("betBtn")
+                    .classList.remove("cashout");
+
+                bet = 0;
+
+                multiplier = 1;
+            }
+
+        },100);
+
+}
+
+
+/* DEMO WALLET */
+
+function demoDeposit(){
+
+    balance += 10000;
+
+    updateBalance();
+
+    alert(
+        "UGX 10,000 demo credits added."
+    );
+}
+
+
+function demoWithdraw(){
+
+    if(balance < 1000){
+
+        alert(
+            "You need at least UGX 1,000 demo credits."
+        );
+
+        return;
+    }
+
+    alert(
+        "This is a demo website. " +
+        "No real withdrawal is processed."
+    );
+}
+
 </script>
+
 </body>
 </html>
