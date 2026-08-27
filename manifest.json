@@ -1,0 +1,13 @@
+{
+  "name": "Jonathan Ouma Aviator",
+  "short_name": "Jonathan Aviator",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0a0e1a",
+  "theme_color": "#ffcc00",
+  "icons": [{
+    "src": "https://cdn-icons-png.flaticon.com/512/3128/3128307.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }]
+}
