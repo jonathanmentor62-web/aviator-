@@ -1,188 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Aviator - Jonathan Mentor | Real</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>JONATHAN AVIATOR</title>
+<link rel="icon" href="profile.jpg">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Segoe UI,Arial Black}
-body{background:#0b0e14;color:#fff;height:100dvh;display:flex;flex-direction:column;overflow:hidden}
-.topbar{background:#1c1e27;display:flex;justify-content:space-between;align-items:center;padding:8px 10px;border-bottom:1px solid #2a2d3e}
-.logo{font-weight:900;color:#d90429;font-size:18px;letter-spacing:-0.5px}
-.logo b{color:#fff;font-weight:900}
-.rightTop{display:flex;gap:6px;align-items:center}
-.bal{ background:#2a2d3e;padding:6px 12px;border-radius:8px;font-weight:900;color:#00ff66;font-size:14px}
-.btnT{border:none;padding:7px 14px;border-radius:8px;font-weight:900;font-size:12px;cursor:pointer;color:#fff}
-.dep{background:#1db954}.with{background:#ff9500}
-.main{flex:1;display:flex;overflow:hidden}
-.leftPanel{width:36%;min-width:145px;background:#1c1e27;border-right:1px solid #2a2d3e;display:flex;flex-direction:column}
-.leftTabs{display:flex;background:#12131a}
-.leftTabs div{flex:1;text-align:center;padding:8px 2px;font-size:10px;font-weight:800;color:#6c6e7a;border-bottom:2px solid transparent}
-.leftTabs div.active{color:#fff;border-bottom-color:#d90429}
-.liveList{flex:1;overflow-y:auto;padding:4px}
-.betRow{display:flex;justify-content:space-between;align-items:center;padding:6px 6px;background:#252836;border-radius:6px;margin-bottom:3px;font-size:11px}
-.betRow.u{color:#9aa0b3;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:60px}
-.betRow.m{font-weight:900}
-.chatBox{height:34%;border-top:1px solid #2a2d3e;display:flex;flex-direction:column;background:#15171f}
-.chatHead{padding:6px 8px;font-size:10px;font-weight:900;color:#9aa0b3;display:flex;justify-content:space-between}
-.chatMsgs{flex:1;overflow-y:auto;padding:6px;font-size:11px}
-.chatMsgs div{margin-bottom:4px}
-.chatInput{display:flex;gap:4px;padding:6px;background:#1c1e27}
-.chatInput input{flex:1;background:#0b0e14;border:1px solid #2a2d3e;border-radius:20px;padding:7px 10px;color:#fff;font-size:12px;outline:none}
-.chatInput button{background:#d90429;border:none;color:#fff;border-radius:50%;width:28px;height:28px;font-weight:900}
-.center{flex:1;display:flex;flex-direction:column;background:#0b0e14;position:relative}
-.histBar{display:flex;gap:4px;padding:7px 6px;overflow-x:auto;background:#12131a;border-bottom:1px solid #2a2d3e;scrollbar-width:none}
-.histBar span{padding:4px 9px;border-radius:12px;font-size:11px;font-weight:900;flex-shrink:0}
-#game{flex:1;position:relative;overflow:hidden;background:radial-gradient(120% 120% at 50% 100%,#1a1d2d 0%,#0b0e14 60%)}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial Black,Arial}
+body{background:#0e0e10;color:#fff}
+.topMain{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:#000;border-bottom:2px solid #ff2a2a}
+.leftBrand{display:flex;align-items:center;gap:10px}
+.leftBrand img{width:52px;height:52px;border-radius:50%;border:3px solid #ffcc00;object-fit:cover}
+.leftBrand.title{line-height:1}
+.leftBrand.title b{font-size:20px;color:#ff2a2a;font-style:italic;letter-spacing:1px}
+.leftBrand.title span{font-size:10px;color:#7de600;display:block;font-family:Arial}
+.rightBtns{display:flex;gap:6px}
+.btnD{border:none;padding:8px 14px;border-radius:6px;font-weight:900;font-size:11px;color:#fff}
+.dep{background:#ff2a2a}.with{background:#1a1a1e;border:1px solid #ffcc00;color:#ffcc00}
+.tabs{display:flex;background:#0e0e10;border-bottom:1px solid #1a1a1e;position:sticky;top:0;z-index:10}
+.tabs div{flex:1;text-align:center;padding:12px 2px;font-size:11px;font-weight:900;color:#6b6b6d;border-bottom:2px solid transparent}
+.tabs div.on{color:#ffcc00;border-color:#ffcc00;background:#1a1a1e}
+#sportsView,#aviatorView{display:none}
+#sportsView.on,#aviatorView.on{display:block}
+.owner{background:linear-gradient(90deg,#1a0000,#1a1a1e);border:1px solid #ff2a2a;border-radius:12px;padding:10px;margin:8px 10px;display:flex;align-items:center;gap:10px}
+.owner img{width:50px;height:50px;border-radius:50%;border:2px solid #ffcc00;object-fit:cover}
+.liveBox{max-height:160px;overflow-y:auto;background:#0e0e10;border:1px solid #1a1a1e;border-radius:10px;margin:8px 10px}
+.liveHead{display:flex;justify-content:space-between;padding:8px 10px;font-size:11px;font-weight:900;background:#1a1a1e;border-radius:10px 10px 0 0}
+.liveRow{display:flex;justify-content:space-between;padding:5px 10px;font-size:11px;border-bottom:1px solid #1a1a1e}
+.match{padding:9px 10px;background:#141418;border-bottom:1px solid #0e0e10}
+.mTop{font-size:9px;color:#6b6b6d;display:flex;justify-content:space-between}
+.mTeams{font-size:12px;font-weight:700}
+.mOdds{display:flex;gap:4px;margin-top:6px}
+.mOdds button{flex:1;background:#1e1e24;border:1px solid #2a2a2e;color:#fff;padding:8px 2px;border-radius:6px;font-weight:800}
+.mOdds button.on{background:#ff2a2a;border-color:#ff2a2a}
+.prizeBar{display:flex;justify-content:space-between;align-items:center;background:#1a1a1e;border:1px solid #ff2a2a;border-radius:24px;padding:4px 4px 4px 12px;margin:8px 10px}
+.prizeBar.arrow{width:34px;height:34px;background:#ffcc00;border-radius:50%;display:flex;justify-content:center;align-items:center;color:#000;font-weight:900}
+.hist{display:flex;gap:6px;padding:8px 10px;overflow-x:auto}
+.hist span{padding:4px 10px;border-radius:12px;font-size:12px;font-weight:700;background:#1a2a4a;color:#4aa6ff;flex-shrink:0}
+#game{position:relative;background:#000;border-radius:18px;margin:0 10px;height:250px;overflow:hidden;border:1px solid #1a1a1e}
 canvas{position:absolute;left:0;top:0;width:100%;height:100%}
-#plane{position:absolute;z-index:3;font-size:30px;filter:drop-shadow(0 0 8px rgba(255,255,255,0.7))}
-#centerText{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);text-align:center;z-index:4;width:100%;pointer-events:none}
-#mult{font-size:78px;font-weight:900;color:#fff;letter-spacing:-2px;text-shadow:0 2px 20px rgba(0,0,0,0.8)}
-#flew{color:#d90429;display:none;font-size:22px;font-weight:900;margin-top:4px;text-shadow:0 0 10px #d90429}
-.betPanel{display:flex;gap:8px;padding:8px;background:#12131a;border-top:1px solid #2a2d3e}
-.bCard{flex:1;background:#1c1e27;border:1px solid #2a2d3e;border-radius:12px;padding:8px;display:flex;flex-direction:column}
-.bTabs{display:flex;background:#12131a;border-radius:6px;padding:2px;margin-bottom:6px}
-.bTabs button{flex:1;border:none;background:transparent;color:#6c6e7a;font-size:10px;font-weight:800;padding:5px;border-radius:5px}
-.bTabs button.on{background:#2a2d3e;color:#fff}
-.inputRow{display:flex;align-items:center;background:#0b0e14;border:1px solid #2a2d3e;border-radius:24px;padding:4px}
-.inputRow button{width:46px;min-width:46px;height:46px;border-radius:50%;border:none;background:#252836;color:#fff;font-size:26px;font-weight:900}
-.inputRow input{flex:1;background:transparent;border:none;color:#fff;text-align:center;font-size:34px;font-weight:900;outline:none}
-.quick{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}
-.quick button{background:#252836;border:none;color:#cbd0e0;padding:9px 0;border-radius:6px;font-size:12px;font-weight:800}
-.autoRow{display:flex;gap:4px;margin-top:6px;font-size:9px;color:#6c6e7a;align-items:center}
-.autoRow input{width:14px;height:14px}
-.betBtn{width:100%;margin-top:8px;border:none;border-radius:10px;padding:15px 0;font-weight:900;font-size:17px;color:#fff;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,0.4)}
-.betBtn span{font-size:12px;display:block;margin-top:1px;opacity:0.9}
-.green{background:linear-gradient(#22c55e,#16a34a);border-bottom:3px solid #15803d}
-.orange{background:linear-gradient(#fb923c,#f97316);animation:pop 0.45s infinite alternate;font-size:20px!important}
-.grey{background:#3f4254}
-@keyframes pop{from{transform:scale(1)}to{transform:scale(1.04)}}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:100;display:none;justify-content:center;align-items:center;padding:16px}
-.mBox{background:#1c1e27;border:1px solid #2a2d3e;border-radius:16px;padding:18px;width:100%;max-width:340px}
-.mBox h3{font-size:18px;margin-bottom:6px}
-.mBox p{font-size:11px;color:#8a8fa3;margin-bottom:10px}
-.mBox input,.mBox select{width:100%;background:#0b0e14;border:1px solid #2a2d3e;color:#fff;padding:13px 12px;border-radius:10px;margin:6px 0;font-size:15px;outline:none}
-.mBox.go{width:100%;padding:14px;border:none;border-radius:10px;font-weight:900;font-size:15px;color:#fff;margin-top:10px;cursor:pointer}
+#plane{position:absolute;z-index:3;font-size:30px}
+#center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;z-index:4;width:100%}
+#mult{font-size:64px;font-weight:900;color:#fff}
+#flew{color:#ff2a2a;display:none}
+#players{position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,0.7);border-radius:20px;padding:4px 8px;font-size:11px;border:1px solid #333;z-index:5;display:flex;align-items:center;gap:4px}
+#players img{width:22px;height:22px;border-radius:50%;border:1px solid #ffcc00}
+.betSec{padding:8px 10px;display:flex;flex-direction:column;gap:8px}
+.bCard{background:#1a1a1e;border-radius:14px;padding:8px;border:1px solid #1e1e20}
+.bRow{display:flex;gap:8px}
+.leftCtrl{flex:1}
+.inputBox{display:flex;align-items:center;background:#0e0e10;border:1px solid #2a2a2e;border-radius:20px;padding:4px 6px}
+.inputBox button{width:26px;height:26px;border-radius:50%;border:1px solid #333;background:#1a1a1e;color:#aaa}
+.inputBox input{flex:1;background:transparent;border:none;color:#fff;text-align:center;font-weight:800;outline:none}
+.quick{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:6px}
+.quick button{background:#0e0e10;border:1px solid #1e1e20;color:#aaa;padding:5px 0;border-radius:14px;font-size:11px}
+.betBtn{flex:1;background:#3ecb00;border:none;border-radius:10px;color:#fff;font-weight:800;font-size:16px;padding:10px 0}
+.betBtn.cash{background:#ff8a00}
+.betBtn.wait{background:#2a2a2e;color:#6b6b6d}
+.betSlip{position:fixed;bottom:0;left:0;right:0;background:#1a1a1e;border-top:2px solid #ff2a2a;padding:8px 10px;z-index:20}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:99;display:none;justify-content:center;align-items:center;padding:14px}
+.box{background:#1a1a1e;border-radius:10px;padding:16px;width:100%;max-width:300px}
+.box input{width:100%;background:#0e0e10;border:1px solid #2a2a2e;color:#fff;padding:10px;border-radius:6px;margin:5px 0}
+.box button{width:100%;padding:10px;border:none;border-radius:6px;font-weight:900;margin-top:6px;color:#fff}
 </style>
 </head>
 <body>
-<div class="topbar">
-<div class="logo">✈️ AVIATOR <b>• JONATHAN</b></div>
-<div class="rightTop">
-<div class="bal">UGX <span id="bal">100,000</span></div>
-<button class="btnT dep" onclick="openM('dep')">DEPOSIT</button>
-<button class="btnT with" onclick="openM('with')">WITHDRAW</button>
+<div class="topMain">
+<div class="leftBrand">
+<img src="profile.jpg" onerror="this.src='https://i.pravatar.cc/100?img=12'">
+<div class="title"><b>JONATHAN AVIATOR</b><span>✅ Verified • Official • Uganda</span></div>
 </div>
+<div class="rightBtns"><button class="btnD dep" onclick="openM('dep')">+ DEPOSIT</button><button class="btnD with" onclick="openM('with')">WITHDRAW</button></div>
 </div>
-<div class="main">
-<div class="leftPanel">
-<div class="leftTabs"><div class="active">ALL BETS • <span id="lcnt">1,472</span></div><div>MY BETS</div><div>TOP</div></div>
-<div class="liveList" id="liveList"></div>
-<div class="chatBox">
-<div class="chatHead"><span>💬 CHAT • 1,240 online</span><span style="color:#1db954">● Live</span></div>
-<div class="chatMsgs" id="chatMsgs">
-<div><b style="color:#fb923c">Kampala_Pro:</b> cashed 8.42x 💰💰</div>
-<div><b style="color:#60a5fa">Mentor_UG:</b> big win 34x!!! 🔥</div>
-<div><b style="color:#a3e635">User_077*:</b> this game is real</div>
-<div><b style="color:#f472b6">Airtel_UG:</b> withdrawn 50k today</div>
-</div>
-<div class="chatInput"><input id="chatIn" placeholder="Send message..."><button onclick="sendChat()">➤</button></div>
-</div>
-</div>
-<div class="center">
-<div class="histBar" id="hist"></div>
-<div id="game"><canvas id="cv"></canvas><div id="plane">✈️</div><div id="centerText"><div id="mult">1.00x</div><div id="flew">FLEW AWAY!</div></div></div>
-<div class="betPanel">
-<div class="bCard">
-<div class="bTabs"><button class="on">Bet</button><button onclick="toggleAuto(1)" id="a1t">Auto</button></div>
-<div class="inputRow"><button onclick="ch(1,-100)">−</button><input id="s1" inputmode="numeric" value="1000"><button onclick="ch(1,100)">+</button></div>
-<div class="quick"><button onclick="setS(1,500)">500</button><button onclick="setS(1,1000)">1K</button><button onclick="setS(1,5000)">5K</button><button onclick="setS(1,10000)">10K</button></div>
-<div class="autoRow"><input type="checkbox" id="auto1"> Auto Bet <input type="checkbox" id="autoc1" style="margin-left:8px"> Auto Cashout <input id="autoCash1" value="2.00" style="width:40px;background:#0b0e14;border:1px solid #333;color:#fff;border-radius:4px;padding:2px;text-align:center;font-size:10px"></div>
-<button id="b1" class="betBtn green" onclick="bet(1)">BET <span id="b1t">1,000 UGX</span></button>
-</div>
-<div class="bCard">
-<div class="bTabs"><button class="on">Bet</button><button onclick="toggleAuto(2)" id="a2t">Auto</button></div>
-<div class="inputRow"><button onclick="ch(2,-100)">−</button><input id="s2" inputmode="numeric" value="1000"><button onclick="ch(2,100)">+</button></div>
-<div class="quick"><button onclick="setS(2,500)">500</button><button onclick="setS(2,1000)">1K</button><button onclick="setS(2,5000)">5K</button><button onclick="setS(2,10000)">10K</button></div>
-<div class="autoRow"><input type="checkbox" id="auto2"> Auto Bet <input type="checkbox" id="autoc2" style="margin-left:8px"> Auto Cashout <input id="autoCash2" value="2.00" style="width:40px;background:#0b0e14;border:1px solid #333;color:#fff;border-radius:4px;padding:2px;text-align:center;font-size:10px"></div>
-<button id="b2" class="betBtn green" onclick="bet(2)">BET <span id="b2t">1,000 UGX</span></button>
-</div>
-</div>
-</div>
-</div>
-<div class="modal" id="depM"><div class="mBox"><h3>💰 Deposit</h3><p>Instant deposit via Mobile Money Uganda</p><select id="depNet"><option>MTN MoMo</option><option>Airtel Money</option></select><input id="depPhone" placeholder="Phone 077XXXXXXX"><input id="depAmt" type="number" placeholder="Amount UGX - Min 1,000"><button class="go" style="background:#1db954" onclick="doDep()">DEPOSIT NOW</button><button class="go" style="background:#2a2d3e" onclick="closeM()">CLOSE</button></div></div>
-<div class="modal" id="withM"><div class="mBox"><h3>💸 Withdraw</h3><p>Withdraw to MTN / Airtel - Instant 1-2 mins</p><select id="withNet"><option>MTN MoMo</option><option>Airtel Money</option></select><input id="withPhone" placeholder="Phone 077XXXXXXX"><input id="withAmt" type="number" placeholder="Amount UGX - Min 1,000"><button class="go" style="background:#ff9500" onclick="doWith()">WITHDRAW NOW</button><button class="go" style="background:#2a2d3e" onclick="closeM()">CLOSE</button><p style="margin-top:10px;font-size:10px">✅ Min 1,000 UGX • Max 5M • Fee 0% • Jonathan Mentor Aviator</p></div></div>
 
-<script>
-let bal=100000, mult=1, flying=false, pts=[];
-let cv=document.getElementById('cv'), ctx=cv.getContext('2d'), plane=document.getElementById('plane'), multEl=document.getElementById('mult'), flew=document.getElementById('flew'), hist=document.getElementById('hist'), game=document.getElementById('game'), liveList=document.getElementById('liveList');
-let s1=document.getElementById('s1'), s2=document.getElementById('s2'), b1=document.getElementById('b1'), b2=document.getElementById('b2'), b1t=document.getElementById('b1t'), b2t=document.getElementById('b2t'), balEl=document.getElementById('bal');
-let bet1={stake:1000,inGame:false,canCash:false, auto:false}, bet2={stake:1000,inGame:false,canCash:false, auto:false};
-function resize(){ let r=game.getBoundingClientRect(); cv.width=r.width*2; cv.height=r.height*2; cv.style.width=r.width+'px'; cv.style.height=r.height+'px'; ctx.setTransform(2,0,0,2,0,0); }
-window.addEventListener('resize',resize); resize();
-function ch(n,d){ let el=n==1?s1:s2; let v=(parseInt(el.value)||1000)+d; if(v<100) v=100; el.value=v; upd(n); }
-function setS(n,v){ (n==1?s1:s2).value=v; upd(n); }
-function upd(n){ let v=parseInt((n==1?s1:s2).value)||0; if(n==1){bet1.stake=v; b1t.innerText=v.toLocaleString()+' UGX';}else{bet2.stake=v; b2t.innerText=v.toLocaleString()+' UGX';} }
-function draw(){ let w=cv.width/2,h=cv.height/2; ctx.clearRect(0,0,w,h); if(pts.length<2) return; ctx.beginPath(); ctx.strokeStyle='#ff002b'; ctx.lineWidth=4; ctx.lineCap='round'; ctx.lineJoin='round'; ctx.moveTo(pts[0].x,pts[0].y); for(let i=1;i<pts.length;i++) ctx.lineTo(pts[i].x,pts[i].y); ctx.stroke(); ctx.lineTo(pts[pts.length-1].x,h); ctx.lineTo(pts[0].x,h); ctx.closePath(); ctx.fillStyle='rgba(255,0,43,0.22)'; ctx.fill(); }
-function addH(m){ let s=document.createElement('span'); s.innerText=m.toFixed(2)+'x'; if(m<2){s.style.background='#1e293b';s.style.color='#94a3b8';}else if(m<10){s.style.background='#1e3a8a';s.style.color='#60a5fa';}else{s.style.background='#14532d';s.style.color='#4ade80';} hist.prepend(s); if(hist.children.length>30) hist.lastChild.remove(); }
-function addLiveBet(u,amt,cashX,win){ let d=document.createElement('div'); d.className='betRow'; let color=cashX? (cashX<2?'#94a3b8':cashX<10?'#60a5fa':'#4ade80'):'#fff'; d.innerHTML=`<span class="u">${u}</span><span>UGX ${amt.toLocaleString()}</span><span class="m" style="color:${color}">${cashX? cashX.toFixed(2)+'x':''}</span><span style="color:#4ade80">${win? 'UGX '+win.toLocaleString():''}</span>`; liveList.prepend(d); if(liveList.children.length>28) liveList.lastChild.remove(); }
-setInterval(()=>{ const names=['077*4*2*','070*9*1*','Jon*','UG_Trader*','KLA*Pro*','Mentor*','Mtn*','077*7*3*']; let a=[500,1000,2000,5000,10000][Math.floor(Math.random()*5)]; let cash=Math.random()>0.35? (1.1+Math.random()*12):0; let win=cash? Math.floor(a*cash):0; addLiveBet(names[Math.floor(Math.random()*names.length)],a,cash,win); document.getElementById('lcnt').innerText=(1450+Math.floor(Math.random()*400)).toLocaleString(); },700);
-function sendChat(){ let i=document.getElementById('chatIn'); let t=i.value.trim(); if(!t) return; let box=document.getElementById('chatMsgs'); let d=document.createElement('div'); d.innerHTML=`<b style="color:#4ade80">You:</b> ${t}`; box.appendChild(d); box.scrollTop=box.scrollHeight; i.value=''; setTimeout(()=>{ let r=['🔥 Nice!','Cashed 5x!','Big win coming','I withdrew 20k','2x is safe']; let dd=document.createElement('div'); dd.innerHTML=`<b style="color:#fb923c">UG_Player:</b> ${r[Math.floor(Math.random()*r.length)]}`; box.appendChild(dd); box.scrollTop=box.scrollHeight; },800); }
-document.getElementById('chatIn').addEventListener('keydown',e=>{ if(e.key==='Enter') sendChat(); });
-function bet(n){
- let B=n==1?bet1:bet2, btn=n==1?b1:b2, el=n==1?s1:s2; let stake=parseInt(el.value)||0; if(stake<100) return; B.stake=stake;
- if(flying && B.inGame && B.canCash){
-   let win=Math.floor(B.stake*mult); bal+=win; balEl.innerText=bal.toLocaleString(); B.inGame=false; B.canCash=false; btn.className='betBtn green'; btn.innerHTML=`BET <span>${B.stake.toLocaleString()} UGX</span>`; multEl.innerText=`WIN ${win.toLocaleString()}`; multEl.style.color='#4ade80'; addLiveBet('You',B.stake,mult,win); return;
- }
- if(!flying &&!B.inGame){
-   if(stake>bal){ openM('dep'); return; }
-   bal-=stake; balEl.innerText=bal.toLocaleString(); B.inGame=true; B.canCash=false; btn.className='betBtn grey'; btn.innerHTML=`WAITING <span>${stake.toLocaleString()} UGX</span>`; addLiveBet('You',stake,0,0);
- }
-}
-function toggleAuto(n){ let c=n==1?document.getElementById('auto1'):document.getElementById('auto2'); c.checked=!c.checked; document.getElementById(n==1?'a1t':'a2t').style.color=c.checked?'#4ade80':''; }
-function openM(t){ document.getElementById(t=='dep'?'depM':'withM').style.display='flex'; }
-function closeM(){ document.getElementById('depM').style.display='none'; document.getElementById('withM').style.display='none'; }
-function doDep(){ let p=document.getElementById('depPhone').value, a=parseInt(document.getElementById('depAmt').value), net=document.getElementById('depNet').value; if(!p||!a||a<1000){alert('Enter phone & min 1000 UGX');return;} bal+=a; balEl.innerText=bal.toLocaleString(); closeM(); alert(`✅ Deposit Success\n${net}\nUGX ${a.toLocaleString()} to ${p}\nBalance: UGX ${bal.toLocaleString()}`); }
-function doWith(){ let p=document.getElementById('withPhone').value, a=parseInt(document.getElementById('withAmt').value), net=document.getElementById('withNet').value; if(!p||!a){alert('Enter phone & amount');return;} if(a>bal){alert('Insufficient balance');return;} if(a<1000){alert('Min 1,000 UGX');return;} bal-=a; balEl.innerText=bal.toLocaleString(); closeM(); alert(`✅ Withdrawal Sent!\n\nUGX ${a.toLocaleString()} → ${p}\nNetwork: ${net}\nYou will receive Mobile Money in 1-2 minutes.\n\nJonathan Mentor Aviator`); }
+<div class="owner"><img src="profile.jpg" onerror="this.src='https://i.pravatar.cc/100?img=12'"><div><b style="color:#ff2a2a">JONATHAN AVIATOR</b><div style="color:#7de600;font-size:11px;font-weight:800">✅ Official Owner • 2,847 Winners Today</div><div style="font-size:10px;color:#aaa">BET • LIVE SPORTS • CASINO • VIRTUAL • UGX 7,310,320 Paid Today</div></div></div>
 
-function startRound(){
- mult=1; flying=false; pts=[]; flew.style.display='none'; multEl.style.color='#fff'; multEl.innerText='1.00x';
- setTimeout(()=>{
-   flying=true; [bet1,bet2].forEach(B=>{ if(B.inGame) B.canCash=true; });
-   // Real crash distribution like Spribe
-   let r=Math.random(); let crash; if(r<0.08) crash=1.02+Math.random()*0.9; else if(r<0.55) crash=1.1+Math.random()*3.5; else if(r<0.85) crash=3+Math.random()*7; else crash=10+Math.pow(Math.random(),1.8)*150;
-   let t0=Date.now();
-   function loop(){
-     if(!flying) return;
-     let e=(Date.now()-t0)/1000; mult=1+ e*0.62 + Math.pow(e,1.9)*0.052;
-     let w=cv.width/2,h=cv.height/2; let prog=e/6; if(prog>1) prog=1; let x=prog*w*0.86; let y=h*0.88 - prog*h*0.72 - Math.pow(prog,1.6)*h*0.12; if(y<h*0.06) y=h*0.06;
-     pts.push({x,y}); if(pts.length>350) pts.shift(); draw(); plane.style.left=(x-14)+'px'; plane.style.top=(y-14)+'px'; plane.style.transform=`rotate(${-5+prog*30}deg)`;
-     if(multEl.innerText.includes('x')||multEl.style.color=='#fff'||multEl.style.color=='rgb(255, 255, 255)') multEl.innerText=mult.toFixed(2)+'x';
-     [bet1,bet2].forEach((B,i)=>{
-       let btn=i==0?b1:b2;
-       if(B.inGame && B.canCash){
-         let autoOn=(i==0?document.getElementById('autoc1').checked:document.getElementById('autoc2').checked);
-         let autoVal=parseFloat((i==0?document.getElementById('autoCash1').value:document.getElementById('autoCash2').value)||2);
-         if(autoOn && mult>=autoVal){ bet(i+1); return; }
-         let cash=Math.floor(B.stake*mult); btn.className='betBtn orange'; btn.innerHTML=`CASH OUT <span>${cash.toLocaleString()} UGX</span>`;
-       }
-     });
-     if(mult>=crash){
-       flying=false; multEl.style.color='#ff002b'; flew.style.display='block'; multEl.innerText=crash.toFixed(2)+'x';
-       [bet1,bet2].forEach((B,i)=>{ if(B.inGame && B.canCash){ B.inGame=false; B.canCash=false; let btn=i==0?b1:b2; btn.className='betBtn green'; btn.innerHTML=`BET <span>${B.stake.toLocaleString()} UGX</span>`; } });
-       addH(crash);
-       // auto bet next round
-       setTimeout(()=>{ [1,2].forEach(n=>{ let ab=n==1?document.getElementById('auto1'):document.getElementById('auto2'); if(ab.checked){ let B=n==1?bet1:bet2; if(!B.inGame && B.stake<=bal){ bet(n); } } }); startRound(); },3000); return;
-     }
-     requestAnimationFrame(loop);
-   }
-   loop();
- },900);
-}
-s1.addEventListener('input',()=>upd(1)); s2.addEventListener('input',()=>upd(2));
-upd(1); upd(2); startRound();
-// initial history
-for(let i=0;i<12;i++) addH([1.2,2.4,5.1,1.08,12.3,3.4,1.9,22.5,4.2,1.34,8.1,2.01][i]);
-</script>
-</body>
- </html>
+<div class="tabs"><div id="tabSports" class="on" onclick="show('sports')">⚽ Sports</div><div id="tabAviator" onclick="show('aviator')">✈️ Aviator</div><div>🎰 Casino</div><div>🔴 Live</div></div>
+
+<div id="sportsView" class="on">
+<div class="liveBox"><div class="liveHead"><span>🌍 Worldwide Live Winners</span><span style="color:#7de600">● LIVE</span></div><div id="liveListSports"></div></div>
+<div class="match"><div class="mTop"><span>Today 19:45 • ID 10234</span><span>+45</span></div><div class="mTeams">Man City vs Arsenal</div><div class="mOdds"><button onclick="addBet(this,'Man City vs Arsenal','Man City',2.10)">1<br>2.10</button><button onclick="addBet(this,'Man City vs Arsenal','Draw',3.40)">X<br>3.40</button><button onclick="addBet(this,'Man City vs Arsenal','Arsenal',3.20)">2<br>3.20</button></div></div>
+<div class="match"><div class="mTop"><span>Today 20:00 • UGPL</span></div><div class="mTeams">Vipers SC vs KCCA FC</div><div class="mOdds"><button onclick="addBet(this,'Vipers vs KCCA','Vipers',1.95)">1<br>1.95</button><button onclick="addBet(this,'Vipers vs KCCA','Draw',3.25)">X<br>3.25</button><button onclick="addBet(this,'Vipers vs KCCA','KCCA',3.80)">2<br>3.80</button></div></div>
+<div style="height:100px"></div>
+<div class="betSlip"><div style="display:flex;justify-content:space-between;font-size:11px;font-weight:800"><span id="betCount">Betslip 0</span><span id="betOdds">Odds: 0.00</span><span onclick="clearBets()" style="color:#ff4444">Clear</span></div><div id="betList" style="font-size:10px;color:#aaa;margin:4px 0">No bets - Click odds</div><div style="display:flex;gap:6px"><input id="stake" type="number" placeholder="Stake UGX" style="flex:1;background:#0e0e10;border:1px solid #2a2a2e;color:#fff;padding:10px;border-radius:6px;text-align:center;font-weight:800"><button onclick="placeBet()" style="flex:1;background:#ff2a2a;border:none;border-radius:6px;font-weight:900;color:#fff;padding:10px">PLACE BET<br><small id="winText">Win: 0</small></button></div></div>
+</div>
+
+<div id="aviatorView">
+<div class="prizeBar"><div><b>UPCOMING</b><br><span style="font-size:11px;color:#fff">JONATHAN AVIATOR Prize Hunt</span></div><div class="arrow">→</div></div>
+<div class="hist" id="hist"></div>
+<div id="game"><canvas id="cv"></canvas><div id="plane">✈️</div><div id="center"><div id="mult">1.00x</div><div id="flew">FLEW AWAY!</div></div><div id="players"><img src="profile.jpg" onerror="this.src='https://i.pravatar.cc/100?img=12'"> <span id="pcount">1,247</span></div></div>
+<div class="liveBox"><div class="liveHead"><span>🌍 Live Players - JONATHAN AVIATOR</span><span id="liveCount">1,247 online</span></div><div id="liveList"></div></div>
+<div class="betSec">
+<div class="bCard"><div class="bRow"><div class="leftCtrl"><div class="inputBox"><button onclick="ch(1,-100)">−</button><input id="s1" value="500.00"><button onclick="ch(1,100)">+</button></div>
