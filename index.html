@@ -1,40 +1,1047 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>HATHAN</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#080a14;color:white;font-family:Arial}
-.banner{width:100%;height:130px;position:relative;background:#000;overflow:hidden}
-.banner img{width:100%;height:100%;object-fit:contain;object-position:top;background:#000}
-.overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.8));padding:8px;display:flex;flex-direction:column;justify-content:space-between}
-.top{display:flex;justify-content:space-between;align-items:flex-start}
-.logo{color:#ff0000;font-size:26px;font-weight:900;font-style:italic;text-shadow:2px 2px 4px #000}
-.rbtns{display:flex;flex-direction:column;gap:3px}
-.rbtns a{padding:4px 10px;border-radius:4px;font-weight:800;font-size:10px;text-decoration:none;text-align:center}
-.b1{background:#ffcc00;color:#000}.b2{background:rgba(0,0,0,0.6);color:white;border:1px solid #fff}.b3{background:#ff0000;color:white}
-.bmenu{display:flex;gap:4px;flex-wrap:wrap;justify-content:center}
-.bmenu a{padding:4px 10px;border-radius:15px;font-size:10px;font-weight:bold;text-decoration:none;background:rgba(0,0,0,0.7);color:white;border:1px solid #444}
-.tabs{background:#0f111f;padding:8px;display:flex;gap:6px;justify-content:center}
-.tabs a{padding:7px 15px;border-radius:20px;font-weight:800;font-size:12px;text-decoration:none}
-.t1{background:#ffcc00;color:#000}.t2{background:#1a1d2e;color:#aaa;border:1px solid #333}
-.box{margin:10px;background:#171a2a;border-radius:12px;padding:18px;text-align:center}
-.mult{font-size:50px;color:#ffcc00;font-weight:900}
-.btn{padding:13px;width:100%;background:#00e701;border:none;border-radius:8px;font-weight:900}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#080a14;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+    max-width:700px;
+    margin:auto;
+}
+
+/* =========================
+   YOUR BANNER - UNCHANGED
+   ========================= */
+
+.banner{
+    width:100%;
+    height:130px;
+    position:relative;
+    background:#000;
+    overflow:hidden;
+}
+
+.banner img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:top;
+    background:#000;
+}
+
+.overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:linear-gradient(
+        rgba(0,0,0,0.1),
+        rgba(0,0,0,0.8)
+    );
+    padding:8px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+}
+
+.logo{
+    color:#ff0000;
+    font-size:26px;
+    font-weight:900;
+    font-style:italic;
+    text-shadow:2px 2px 4px #000;
+}
+
+.rbtns{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+}
+
+.rbtns a{
+    padding:4px 10px;
+    border-radius:4px;
+    font-weight:800;
+    font-size:10px;
+    text-decoration:none;
+    text-align:center;
+}
+
+.b1{
+    background:#ffcc00;
+    color:#000;
+}
+
+.b2{
+    background:rgba(0,0,0,0.6);
+    color:white;
+    border:1px solid #fff;
+}
+
+.b3{
+    background:#ff0000;
+    color:white;
+}
+
+.bmenu{
+    display:flex;
+    gap:4px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.bmenu a{
+    padding:4px 10px;
+    border-radius:15px;
+    font-size:10px;
+    font-weight:bold;
+    text-decoration:none;
+    background:rgba(0,0,0,0.7);
+    color:white;
+    border:1px solid #444;
+}
+
+/* =========================
+   MAIN NAVIGATION
+   ========================= */
+
+.tabs{
+    background:#111525;
+    padding:8px;
+    display:flex;
+    gap:6px;
+    overflow-x:auto;
+}
+
+.tabs a{
+    flex:1;
+    min-width:105px;
+    padding:10px 12px;
+    border-radius:7px;
+    text-align:center;
+    font-size:12px;
+    font-weight:900;
+    text-decoration:none;
+}
+
+.t1{
+    background:#ffcc00;
+    color:#000;
+}
+
+.t2{
+    background:#1b1f30;
+    color:#aaa;
+    border:1px solid #303548;
+}
+
+/* =========================
+   DEMO WALLET
+   ========================= */
+
+.wallet{
+    margin:10px;
+    padding:12px;
+    background:#121625;
+    border:1px solid #272c3e;
+    border-radius:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.wallet small{
+    color:#888;
+    display:block;
+    font-size:10px;
+}
+
+.wallet strong{
+    font-size:18px;
+    color:#ffcc00;
+}
+
+.wallet button{
+    background:#ffcc00;
+    border:0;
+    border-radius:6px;
+    padding:8px 12px;
+    font-weight:900;
+}
+
+/* =========================
+   GAME HEADER
+   ========================= */
+
+.game{
+    margin:10px;
+    border-radius:12px;
+    overflow:hidden;
+    background:#101421;
+    border:1px solid #272c3e;
+}
+
+.gamehead{
+    padding:12px;
+    background:#181c2b;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.gamehead h3{
+    color:#ffcc00;
+    font-size:15px;
+}
+
+.live{
+    color:#00e701;
+    font-size:10px;
+    font-weight:900;
+}
+
+/* =========================
+   AVIATOR AREA
+   ========================= */
+
+.flight{
+    position:relative;
+    height:320px;
+    overflow:hidden;
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            #252d4b 0,
+            #101626 35%,
+            #070a13 80%
+        );
+}
+
+/* grid */
+
+.flight:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    opacity:.15;
+    background-image:
+        linear-gradient(#ffffff 1px,transparent 1px),
+        linear-gradient(90deg,#ffffff 1px,transparent 1px);
+    background-size:45px 45px;
+}
+
+.cloud{
+    position:absolute;
+    width:100px;
+    height:25px;
+    background:rgba(255,255,255,.07);
+    border-radius:50%;
+    filter:blur(4px);
+    animation:cloud 12s linear infinite;
+}
+
+.cloud.one{
+    top:50px;
+    left:-120px;
+}
+
+.cloud.two{
+    top:140px;
+    left:-250px;
+    animation-delay:4s;
+}
+
+@keyframes cloud{
+    from{
+        transform:translateX(-100px);
+    }
+    to{
+        transform:translateX(900px);
+    }
+}
+
+.multiplier{
+    position:absolute;
+    top:35px;
+    left:0;
+    right:0;
+    text-align:center;
+    font-size:58px;
+    font-weight:900;
+    color:#ffcc00;
+    text-shadow:0 0 20px rgba(255,204,0,.25);
+    z-index:4;
+}
+
+.status{
+    position:absolute;
+    top:105px;
+    left:0;
+    right:0;
+    text-align:center;
+    color:#888;
+    font-size:11px;
+    z-index:4;
+}
+
+.plane{
+    position:absolute;
+    left:25px;
+    bottom:35px;
+    font-size:42px;
+    z-index:5;
+    transform-origin:center;
+    transition:transform .08s linear;
+}
+
+.trail{
+    position:absolute;
+    height:3px;
+    width:130px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #ffcc00
+    );
+    left:0;
+    bottom:55px;
+    opacity:.8;
+    transform-origin:left;
+}
+
+/* =========================
+   CONTROLS
+   ========================= */
+
+.controls{
+    padding:12px;
+    background:#0d101b;
+}
+
+.betrow{
+    display:flex;
+    gap:8px;
+    margin-bottom:8px;
+}
+
+.betrow button{
+    flex:1;
+    background:#1b2030;
+    color:#aaa;
+    border:1px solid #303548;
+    padding:9px;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+.betrow button.selected{
+    background:#ffcc00;
+    color:#000;
+}
+
+.action{
+    width:100%;
+    border:0;
+    padding:14px;
+    border-radius:7px;
+    font-size:15px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.bet{
+    background:#00e701;
+    color:#001400;
+}
+
+.cash{
+    background:#ff2929;
+    color:#fff;
+    display:none;
+}
+
+/* =========================
+   ROUND HISTORY
+   ========================= */
+
+.history{
+    margin:10px;
+}
+
+.history-title{
+    padding:10px 0;
+    font-size:12px;
+    font-weight:900;
+    color:#aaa;
+}
+
+.history-list{
+    display:flex;
+    gap:6px;
+    overflow-x:auto;
+}
+
+.history-item{
+    padding:7px 11px;
+    background:#191d2c;
+    border-radius:5px;
+    font-size:11px;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.low{
+    color:#ff4444;
+}
+
+.mid{
+    color:#ffcc00;
+}
+
+.high{
+    color:#00e701;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media(max-width:450px){
+
+    .flight{
+        height:290px;
+    }
+
+    .multiplier{
+        font-size:48px;
+    }
+
+    .plane{
+        font-size:36px;
+    }
+}
 </style>
 </head>
+
 <body>
+
+<!-- YOUR ORIGINAL BANNER -->
 <div class="banner">
-<img src="IMG-20260827-WA6354.jpg" onerror="this.src='banner.jpg'">
+
+<img src="IMG-20260827-WA6354.jpg"
+     onerror="this.src='banner.jpg'">
+
 <div class="overlay">
-<div class="top"><div class="logo">HATHAN</div><div class="rbtns"><a href="deposit.html" class="b1">+ DEPOSIT</a><a href="withdraw.html" class="b2">WITHDRAW</a><a href="join.html" class="b3">JOIN NOW</a></div></div>
-<div class="bmenu"><a href="bet.html">⚽ BET</a><a href="live.html">🔴 LIVE</a><a href="casino.html">🎰 CASINO</a><a href="deposit.html">💰 DEPOSIT</a><a href="join.html" style="background:#ff0000">🔐 JOIN</a></div>
+
+<div class="top">
+
+<div class="logo">
+HATHAN
+</div>
+
+<div class="rbtns">
+
+<a href="deposit.html" class="b1">
++ DEPOSIT
+</a>
+
+<a href="withdraw.html" class="b2">
+WITHDRAW
+</a>
+
+<a href="join.html" class="b3">
+JOIN NOW
+</a>
+
+</div>
+
+</div>
+
+<div class="bmenu">
+
+<a href="bet.html">⚽ BET</a>
+<a href="live.html">🔴 LIVE</a>
+<a href="casino.html">🎰 CASINO</a>
+<a href="deposit.html">💰 DEPOSIT</a>
+<a href="join.html" style="background:#ff0000">
+🔐 JOIN
+</a>
+
+</div>
+
 </div>
 </div>
-<div class="tabs"><a href="index.html" class="t1">✈️ AVIATOR</a><a href="bet.html" class="t2">⚽ FOOTBALL</a><a href="casino.html" class="t2">🎰 CASINO</a></div>
-<div class="box"><h3 style="color:#ffcc00">✈️ HATHAN AVIATOR</h3><div class="mult" id="m">1.00x</div><div style="font-size:40px" id="pl">✈️</div><button id="b" class="btn" onclick="go()">BET 1000 UGX</button><button id="c" class="btn" style="background:#ff2222;color:white;display:none" onclick="out()">CASHOUT</button></div>
-<script>let p=false,cur=1,cr=0,iv;function go(){if(p)return;p=true;cur=1;cr=(Math.random()*9+1.2).toFixed(2);b.style.display='none';c.style.display='block';iv=setInterval(()=>{cur+=0.07;m.innerHTML=cur.toFixed(2)+'x';if(cur>=cr){clearInterval(iv);m.innerHTML='💥 '+cur.toFixed(2)+'x';b.style.display='block';c.style.display='none';p=false;}},80);}function out(){clearInterval(iv);b.style.display='block';c.style.display='none';p=false;}</script>
+
+
+<!-- MAIN TABS -->
+
+<div class="tabs">
+
+<a href="index.html" class="t1">
+✈️ AVIATOR
+</a>
+
+<a href="bet.html" class="t2">
+⚽ FOOTBALL
+</a>
+
+<a href="casino.html" class="t2">
+🎰 CASINO
+</a>
+
+</div>
+
+
+<!-- DEMO BALANCE -->
+
+<div class="wallet">
+
+<div>
+<small>DEMO BALANCE</small>
+<strong>
+<span id="balance">100000</span> UGX
+</strong>
+</div>
+
+<button onclick="addDemoFunds()">
++ 10K
+</button>
+
+</div>
+
+
+<!-- AVIATOR -->
+
+<div class="game">
+
+<div class="gamehead">
+
+<h3>
+✈️ HATHAN AVIATOR
+</h3>
+
+<span class="live" id="live">
+● READY
+</span>
+
+</div>
+
+
+<div class="flight">
+
+<div class="cloud one"></div>
+<div class="cloud two"></div>
+
+<div class="multiplier" id="m">
+1.00x
+</div>
+
+<div class="status" id="status">
+Place your demo bet
+</div>
+
+<div class="trail" id="trail"></div>
+
+<div class="plane" id="pl">
+✈️
+</div>
+
+</div>
+
+
+<div class="controls">
+
+<div class="betrow">
+
+<button onclick="setBet(1000,this)">
+1K
+</button>
+
+<button onclick="setBet(5000,this)">
+5K
+</button>
+
+<button onclick="setBet(10000,this)">
+10K
+</button>
+
+<button onclick="setBet(20000,this)">
+20K
+</button>
+
+</div>
+
+<button
+id="betButton"
+class="action bet"
+onclick="startRound()">
+
+BET <span id="betAmount">1000</span> UGX
+
+</button>
+
+<button
+id="cashButton"
+class="action cash"
+onclick="cashOut()">
+
+CASH OUT
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- HISTORY -->
+
+<div class="history">
+
+<div class="history-title">
+RECENT FLIGHTS
+</div>
+
+<div class="history-list" id="history">
+
+<div class="history-item mid">1.42x</div>
+<div class="history-item high">3.18x</div>
+<div class="history-item low">1.09x</div>
+<div class="history-item high">6.44x</div>
+<div class="history-item mid">2.03x</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   DEMO AVIATOR ENGINE
+   ========================= */
+
+let running = false;
+let multiplier = 1;
+let crashPoint = 0;
+let timer = null;
+
+let balance = 100000;
+let selectedBet = 1000;
+let startTime = 0;
+
+
+/* ELEMENTS */
+
+const m = document.getElementById("m");
+const pl = document.getElementById("pl");
+const trail = document.getElementById("trail");
+const statusText = document.getElementById("status");
+const live = document.getElementById("live");
+const balanceEl = document.getElementById("balance");
+const betButton = document.getElementById("betButton");
+const cashButton = document.getElementById("cashButton");
+
+
+/* BET SELECTION */
+
+function setBet(amount, button){
+
+    if(running) return;
+
+    selectedBet = amount;
+
+    document.getElementById("betAmount").innerText =
+        amount.toLocaleString();
+
+    document
+        .querySelectorAll(".betrow button")
+        .forEach(b => b.classList.remove("selected"));
+
+    button.classList.add("selected");
+}
+
+
+/* ADD DEMO MONEY */
+
+function addDemoFunds(){
+
+    balance += 10000;
+
+    updateBalance();
+
+}
+
+
+/* BALANCE */
+
+function updateBalance(){
+
+    balanceEl.innerText =
+        balance.toLocaleString();
+
+}
+
+
+/* CREATE SIMULATED ROUND */
+
+function createRound(){
+
+    /*
+       Demo-only random flight outcome.
+       It is generated locally and is not
+       connected to real betting systems.
+    */
+
+    let r = Math.random();
+
+    if(r < 0.45){
+
+        crashPoint =
+            1.10 + Math.random() * 1.3;
+
+    }
+    else if(r < 0.80){
+
+        crashPoint =
+            2.0 + Math.random() * 3.5;
+
+    }
+    else if(r < 0.96){
+
+        crashPoint =
+            5.0 + Math.random() * 10;
+
+    }
+    else{
+
+        crashPoint =
+            15 + Math.random() * 20;
+
+    }
+
+}
+
+
+/* START */
+
+function startRound(){
+
+    if(running) return;
+
+    if(balance < selectedBet){
+
+        statusText.innerText =
+            "Not enough demo credits";
+
+        return;
+    }
+
+
+    balance -= selectedBet;
+    updateBalance();
+
+
+    createRound();
+
+    running = true;
+
+    multiplier = 1;
+
+    startTime = performance.now();
+
+
+    betButton.style.display = "none";
+    cashButton.style.display = "block";
+
+
+    live.innerText = "● FLYING";
+    live.style.color = "#00e701";
+
+    statusText.innerText =
+        "Flight in progress";
+
+
+    timer = setInterval(updateFlight,80);
+
+}
+
+
+/* FLIGHT UPDATE */
+
+function updateFlight(){
+
+    let elapsed =
+        performance.now() - startTime;
+
+
+    /*
+       Smooth exponential-style growth.
+    */
+
+    multiplier =
+        Math.exp(elapsed / 17000);
+
+
+    m.innerText =
+        multiplier.toFixed(2) + "x";
+
+
+    /*
+       Plane trajectory
+    */
+
+    let x =
+        Math.min(80 + multiplier * 24, 650);
+
+    let y =
+        Math.min(multiplier * 7, 190);
+
+
+    pl.style.transform =
+        `translate(${x}px,-${y}px) rotate(-${Math.min(multiplier*2,18)}deg)`;
+
+
+    trail.style.width =
+        Math.min(130 + multiplier * 10,320) + "px";
+
+    trail.style.transform =
+        `translate(${x}px,-${y}px) rotate(-${Math.min(multiplier*2,18)}deg)`;
+
+
+    /*
+       Crash
+    */
+
+    if(multiplier >= crashPoint){
+
+        crash();
+
+    }
+
+}
+
+
+/* CRASH */
+
+function crash(){
+
+    clearInterval(timer);
+
+    running = false;
+
+
+    let result =
+        multiplier.toFixed(2);
+
+
+    m.innerText =
+        "💥 " + result + "x";
+
+
+    statusText.innerText =
+        "Flight crashed";
+
+
+    live.innerText =
+        "● CRASHED";
+
+    live.style.color =
+        "#ff3333";
+
+
+    pl.style.transform =
+        "translate(500px,80px) rotate(35deg)";
+
+
+    addHistory(multiplier);
+
+
+    betButton.style.display =
+        "block";
+
+    cashButton.style.display =
+        "none";
+
+
+    setTimeout(() => {
+
+        resetRound();
+
+    },1800);
+
+}
+
+
+/* CASH OUT */
+
+function cashOut(){
+
+    if(!running) return;
+
+
+    clearInterval(timer);
+
+    running = false;
+
+
+    let win =
+        Math.floor(selectedBet * multiplier);
+
+
+    balance += win;
+
+    updateBalance();
+
+
+    statusText.innerText =
+        "Cashed out at " +
+        multiplier.toFixed(2) + "x";
+
+
+    live.innerText =
+        "● CASHED OUT";
+
+    live.style.color =
+        "#ffcc00";
+
+
+    addHistory(multiplier);
+
+
+    betButton.style.display =
+        "block";
+
+    cashButton.style.display =
+        "none";
+
+
+    setTimeout(() => {
+
+        resetRound();
+
+    },1500);
+
+}
+
+
+/* RESET */
+
+function resetRound(){
+
+    multiplier = 1;
+
+    m.innerText =
+        "1.00x";
+
+
+    pl.style.transform =
+        "translate(0,0)";
+
+
+    trail.style.transform =
+        "translate(0,0)";
+
+
+    trail.style.width =
+        "130px";
+
+
+    statusText.innerText =
+        "Place your demo bet";
+
+
+    live.innerText =
+        "● READY";
+
+    live.style.color =
+        "#00e701";
+
+}
+
+
+/* HISTORY */
+
+function addHistory(value){
+
+    let history =
+        document.getElementById("history");
+
+
+    let item =
+        document.createElement("div");
+
+
+    item.className =
+        "history-item";
+
+
+    item.innerText =
+        value.toFixed(2) + "x";
+
+
+    if(value < 2){
+
+        item.classList.add("low");
+
+    }
+    else if(value < 5){
+
+        item.classList.add("mid");
+
+    }
+    else{
+
+        item.classList.add("high");
+
+    }
+
+
+    history.prepend(item);
+
+
+    /*
+       Keep history compact.
+    */
+
+    while(history.children.length > 10){
+
+        history.removeChild(
+            history.lastChild
+        );
+
+    }
+
+}
+
+
+/* INITIAL */
+
+updateBalance();
+
+document
+    .querySelector(".betrow button")
+    .classList.add("selected");
+
+</script>
+
 </body>
   </html>
