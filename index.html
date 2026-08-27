@@ -1,47 +1,68 @@
-here<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>JONATHAN AVIATOR</title>
-<link rel="manifest" href="manifest.json">
+<title>HATHAN</title>
 <style>
-body{margin:0;background:#0a0e1a;color:white;font-family:Arial;text-align:center}
-.banner{width:100%;background:#000}
-.banner img{width:100%;display:block}
-.links{padding:12px;background:#111;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;font-weight:bold;font-size:13px}
-.links a{color:#aaa;text-decoration:none;padding:7px 14px;border:1px solid #333;border-radius:20px}
-.links a:hover{color:#fff;background:#ff0000;border-color:#ff0000}
-.game{margin:15px;padding:20px;background:#1a1a2e;border-radius:15px;border:2px solid #ffcc00}
-.multiplier{font-size:60px;font-weight:bold;color:#ffcc00;margin:15px 0}
-.btn{padding:15px 30px;font-size:18px;font-weight:bold;border:none;border-radius:10px;cursor:pointer;width:95%;max-width:300px;margin:8px}
-.section{margin:15px;padding:25px;background:#1a1a1a;border-radius:15px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#080a14;color:white;font-family:Arial}
+.banner{background:linear-gradient(180deg,#000,#111);padding:15px;text-align:center;border-bottom:3px solid #ff0000}
+.banner h1{color:#ff0000;font-size:38px;font-weight:900;font-style:italic;letter-spacing:2px}
+.banner-menu{margin-top:12px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.banner-menu a{padding:8px 18px;border-radius:20px;text-decoration:none;font-weight:bold;font-size:13px;border:1px solid #333}
+.menu-aviator{background:#ffcc00;color:#000;border-color:#ffcc00 !important}
+.menu-football{background:#00aaff;color:white}
+.menu-casino{background:#ff0000;color:white}
+.section{display:none;margin:10px;background:#171a2a;border-radius:12px;padding:15px;min-height:300px}
+.section.active{display:block}
+.mult{font-size:55px;font-weight:bold;color:#ffcc00;text-align:center;margin:10px 0}
+.btn{padding:14px;width:100%;background:#00d632;color:#000;font-weight:bold;border:none;border-radius:8px;font-size:16px}
+.btn-cash{padding:14px;width:100%;background:#ff2222;color:white;font-weight:bold;border:none;border-radius:8px;font-size:16px;display:none}
+.match{background:#1a1d2e;padding:12px;margin:8px 0;border-radius:8px;display:flex;justify-content:space-between;align-items:center}
+.odds{display:flex;gap:5px}
+.odd{background:#25283d;padding:6px 12px;border-radius:5px;font-size:12px}
 </style>
 </head>
 <body>
-<div class="banner"><img src="IMG-20260827-WA6354.jpg"></div>
-<div class="links">
-<a href="#bet">⚽ BET</a>
-<a href="#live">🔴 LIVE SPORTS</a>
-<a href="#casino">🎰 CASINO</a>
-<a href="#virtual">🎮 VIRTUAL GAMES</a>
+
+<div class="banner">
+<h1>HATHAN</h1>
+<div class="banner-menu">
+<a href="#" class="menu-aviator" onclick="showSec('aviator',this)">✈️ AVIATOR</a>
+<a href="#" class="menu-football" onclick="showSec('football',this)">⚽ FOOTBALL</a>
+<a href="#" class="menu-casino" onclick="showSec('casino',this)">🎰 CASINO</a>
 </div>
-<div class="game">
-<h2>✈️ JONATHAN AVIATOR</h2>
-<div class="multiplier" id="mult">1.00x</div>
-<button class="btn" style="background:#00ff00;color:#000" id="betBtn" onclick="startGame()">BET - 1000 UGX</button>
-<button class="btn" style="background:#ff0000;color:white;display:none" id="cashBtn" onclick="cashout()">CASHOUT</button>
-<p id="status">Set BET and fly!</p>
 </div>
-<div id="bet" class="section"><h2 style="color:#ff0000">⚽ BET</h2><p>Best odds on Football!</p></div>
-<div id="live" class="section"><h2 style="color:#00ff00">🔴 LIVE SPORTS</h2><p>Live betting!</p></div>
-<div id="casino" class="section"><h2 style="color:#ffcc00">🎰 CASINO</h2><p>Aviator & Slots</p></div>
-<div id="virtual" class="section"><h2 style="color:#00aaff">🎮 VIRTUAL GAMES</h2><p>Virtual Football - Every 3 min!</p></div>
-<script>
-let playing=false,curr=1.00,crash=0,intv;
-function startGame(){if(playing)return;playing=true;curr=1.00;crash=(Math.random()*8+1.2).toFixed(2);document.getElementById('betBtn').style.display='none';document.getElementById('cashBtn').style.display='inline-block';document.getElementById('status').innerHTML='Flying... Crash at '+crash+'x';intv=setInterval(()=>{curr+=0.05;document.getElementById('mult').innerHTML=curr.toFixed(2)+'x';if(curr>=crash){clearInterval(intv);document.getElementById('mult').innerHTML='💥 CRASH '+curr.toFixed(2)+'x';document.getElementById('status').innerHTML='Crashed!';document.getElementById('betBtn').style.display='inline-block';document.getElementById('cashBtn').style.display='none';playing=false;}},100);}
-function cashout(){if(!playing)return;clearInterval(intv);document.getElementById('status').innerHTML='✅ Won '+(curr*1000).toFixed(0)+' UGX!';document.getElementById('betBtn').style.display='inline-block';document.getElementById('cashBtn').style.display='none';playing=false;}
-document.querySelectorAll('a[href^=\"#\"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'})})});
-</script>
-</body>
-  </html>
+
+<!-- AVIATOR SECTION -->
+<div id="aviator" class="section active">
+<h2 style="text-align:center;color:#ffcc00">✈️ HATHAN AVIATOR</h2>
+<div class="mult" id="mult">1.00x</div>
+<div style="text-align:center;font-size:45px" id="plane">✈️</div>
+<button class="btn" id="betBtn" onclick="startGame()">BET 1000 UGX</button>
+<button class="btn-cash" id="cashBtn" onclick="cashout()">CASHOUT</button>
+<p id="status" style="text-align:center;margin-top:10px;color:#888">Crash game - Cashout before crash!</p>
+<div style="margin-top:15px;display:flex;gap:5px;overflow-x:auto" id="history">
+<span style="padding:4px 8px;background:#003300;color:#00ff00;border-radius:10px;font-size:12px">1.45x</span>
+<span style="padding:4px 8px;background:#001a33;color:#00aaff;border-radius:10px;font-size:12px">2.05x</span>
+</div>
+</div>
+
+<!-- FOOTBALL SECTION -->
+<div id="football" class="section">
+<h2 style="color:#00aaff;margin-bottom:10px">⚽ FOOTBALL GAMES</h2>
+<div class="match">
+<div><b>Man City vs Arsenal</b><br><small style="color:#888">Premier League • Today 19:00</small></div>
+<div class="odds"><span class="odd">2.10</span><span class="odd">3.20</span><span class="odd">3.50</span></div>
+</div>
+<div class="match">
+<div><b>Barcelona vs Real Madrid</b><br><small style="color:#888">La Liga • Today 21:00</small></div>
+<div class="odds"><span class="odd">2.45</span><span class="odd">3.10</span><span class="odd">2.90</span></div>
+</div>
+<div class="match">
+<div><b>Vipers SC vs KCCA FC</b><br><small style="color:#888">UPL • Today 16:00</small></div>
+<div class="odds"><span class="odd">1.85</span><span class="odd">3.40</span><span class="odd">4.20</span></div>
+</div>
+<div class="match">
+<div><b>Ug
