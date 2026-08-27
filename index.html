@@ -24,7 +24,7 @@ body{background:#0a0e1a;color:#fff;font-family:Arial}
 .bet-btn.cashout{background:#ff3d00}
 .momo-box{background:linear-gradient(135deg,#ffcc00,#ff9900);color:#000;padding:15px;border-radius:12px;margin:15px;text-align:center}
 .pay-btn{background:#000;color:#ffcc00;padding:10px 20px;border:none;border-radius:20px;font-weight:bold;margin-top:10px}
-.login-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:flex;justify-content:center;align-items:center;z-index:9999}
+.login-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);display:flex;justify-content:center;align-items:center;z-index:9999}
 .login-card{background:#141a2e;padding:25px;border-radius:15px;width:90%;max-width:350px;border:2px solid #ffcc00}
 .login-card input{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:none;background:#0a0e1a;color:#fff}
 .login-card button{width:100%;padding:12px;background:#ffcc00;color:#000;border:none;border-radius:8px;font-weight:bold;margin-top:10px}
@@ -32,7 +32,7 @@ body{background:#0a0e1a;color:#fff;font-family:Arial}
 .alert-box{background:#141a2e;border:2px solid #ffcc00;padding:20px;border-radius:12px;width:85%;max-width:320px;text-align:center}
 .alert-box h3{color:#ffcc00;margin-bottom:10px}
 .alert-box button{background:#ffcc00;color:#000;border:none;padding:10px 20px;border-radius:8px;font-weight:bold;margin-top:10px}
-#depositModal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:none;justify-content:center;align-items:center;z-index:10000}
+#depositModal,#withdrawModal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:none;justify-content:center;align-items:center;z-index:10000}
 </style>
 </head>
 <body>
@@ -40,7 +40,7 @@ body{background:#0a0e1a;color:#fff;font-family:Arial}
 <div id="loginModal" class="login-modal">
 <div class="login-card">
 <h2 style="color:#ffcc00;text-align:center">JONATHAN AVIATOR</h2>
-<p style="text-align:center;margin:10px 0">Login to Play & Win</p>
+<p style="text-align:center;margin:10px 0">Welcome! Login to Play</p>
 <input id="username" placeholder="Your Name">
 <input id="pass" type="password" placeholder="Password">
 <button onclick="login()">LOGIN / REGISTER</button>
@@ -49,10 +49,8 @@ body{background:#0a0e1a;color:#fff;font-family:Arial}
 </div>
 
 <div id="customAlert"><div class="alert-box"><h3 id="alertTitle">Success</h3><p id="alertMsg"></p><button onclick="closeAlert()">OK</button></div></div>
-
 <div id="depositModal"><div class="alert-box"><h3>Deposit Confirm</h3><p>How much sent to<br><b>0794650803</b>?</p><input id="depAmt" type="number" placeholder="Enter amount" style="width:100%;padding:12px;margin:10px 0;border-radius:8px;border:none;background:#0a0e1a;color:#fff;text-align:center"><button onclick="confirmDep()">CONFIRM</button><button onclick="closeDep()" style="background:#555;color:#fff;margin-left:5px">CANCEL</button></div></div>
-
-<div id="withdrawModal" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:none;justify-content:center;align-items:center;z-index:10000"><div class="alert-box"><h3>Withdraw</h3><p>Enter your MoMo number</p><input id="withPhone" placeholder="07XXXXXXXX" style="width:100%;padding:12px;margin:10px 0;border-radius:8px;border:none;background:#0a0e1a;color:#fff;text-align:center"><button onclick="confirmWith()">WITHDRAW</button><button onclick="document.getElementById('withdrawModal').style.display='none'" style="background:#555;color:#fff;margin-left:5px">CANCEL</button></div></div>
+<div id="withdrawModal"><div class="alert-box"><h3>Withdraw</h3><p>Enter your MoMo number</p><input id="withPhone" placeholder="07XXXXXXXX" style="width:100%;padding:12px;margin:10px 0;border-radius:8px;border:none;background:#0a0e1a;color:#fff;text-align:center"><button onclick="confirmWith()">WITHDRAW</button><button onclick="document.getElementById('withdrawModal').style.display='none'" style="background:#555;color:#fff;margin-left:5px">CANCEL</button></div></div>
 
 <div class="header">
 <div class="logo">✈ JONATHAN AVIATOR</div>
@@ -111,14 +109,13 @@ function showAlert(msg,title='Success'){document.getElementById('alertMsg').inne
 function closeAlert(){document.getElementById('customAlert').style.display='none';}
 function openDep(){document.getElementById('depositModal').style.display='flex';}
 function closeDep(){document.getElementById('depositModal').style.display='none';}
-function confirmDep(){let amt=document.getElementById('depAmt').value;if(amt&&!isNaN(amt)&&amt>0){balance+=parseInt(amt);updateBal();closeDep();document.getElementById('depAmt').value='';showAlert('Deposit UGX '+amt+' CONFIRMED Boss! Added to balance!');}else{showAlert('Enter valid amount','Error');}}
-function openWith(){if(balance<1000){showAlert('Min withdrawal UGX 1000','Error');return}document.getElementById('withdrawModal').style.display='flex';}
-function confirmWith(){let phone=document.getElementById('withPhone').value;if(!phone){showAlert('Enter phone','Error');return}showAlert('Withdrawal UGX '+balance+' to '+phone+' will be sent from 0794650803. Wait 5 mins','Withdrawal Sent');balance=0;updateBal();document.getElementById('withdrawModal').style.display='none';document.getElementById('withPhone').value='';}
-function login(){let u=document.getElementById('username').value;if(!u){showAlert('Enter your name','Error');return}localStorage.setItem('user',u);document.getElementById('userDisplay').innerText=u;document.getElementById('loginModal').style.display='none';updateBal();}
-let savedUser=localStorage.getItem('user');if(savedUser){document.getElementById('userDisplay').innerText=savedUser;document.getElementById('loginModal').style.display='none';}
+function confirmDep(){let amt=document.getElementById('depAmt').value;if(amt&&!isNaN(amt)&&amt>0){balance+=parseInt(amt);updateBal();closeDep();document.getElementById('depAmt').value='';showAlert('Deposit UGX '+amt+' CONFIRMED Boss!');}else{showAlert('Enter valid amount','Error');}}
+function openWith(){if(balance<1000){showAlert('Min 1000','Error');return}document.getElementById('withdrawModal').style.display='flex';}
+function confirmWith(){let phone=document.getElementById('withPhone').value;if(!phone){showAlert('Enter phone','Error');return}showAlert('Withdrawal UGX '+balance+' to '+phone+' will be sent from 0794650803','Sent');balance=0;updateBal();document.getElementById('withdrawModal').style.display='none';}
+function login(){let u=document.getElementById('username').value;if(!u){showAlert('Enter name','Error');return}document.getElementById('userDisplay').innerText=u;document.getElementById('loginModal').style.display='none';updateBal();}
 function updateBal(){document.getElementById('balance').innerText='UGX '+balance;document.getElementById('walletBal').innerText='UGX '+balance;localStorage.setItem('bal',balance);}
 function showTab(t){document.getElementById('aviatorTab').style.display='none';document.getElementById('sportsTab').style.display='none';document.getElementById('walletTab').style.display='none';document.querySelectorAll('.tab').forEach(e=>e.classList.remove('active'));if(t=='aviator'){document.getElementById('aviatorTab').style.display='block';document.querySelectorAll('.tab')[0].classList.add('active')}if(t=='sports'){document.getElementById('sportsTab').style.display='block';document.querySelectorAll('.tab')[1].classList.add('active')}if(t=='wallet'){document.getElementById('walletTab').style.display='block';document.querySelectorAll('.tab')[2].classList.add('active')}}
-function changeBet(a){let inp=document.getElementById('betAmount');inp.value=parseInt(inp.value)+a}
+function changeBet(a){document.getElementById('betAmount').value=parseInt(document.getElementById('betAmount').value)+a}
 function placeBet(){let amount=parseInt(document.getElementById('betAmount').value);if(amount>balance){showAlert('No balance! Deposit to 0794650803','Low Balance');showTab('wallet');return}if(bet>0){let win=Math.floor(bet*mult);balance+=win;updateBal();clearInterval(interval);showAlert('WIN UGX '+win+' at '+mult.toFixed(2)+'x','YOU WIN!');document.getElementById('status').innerText='WIN UGX '+win;document.getElementById('betBtn').innerText='ADD BET PLEASE';document.getElementById('betBtn').className='bet-btn';bet=0;mult=1.00;document.getElementById('multiplier').innerText='1.00x';return;}bet=amount;balance-=amount;updateBal();document.getElementById('betBtn').innerText='CASHOUT';document.getElementById('betBtn').className='bet-btn cashout';document.getElementById('status').innerText='Flying...';mult=1.00;interval=setInterval(()=>{mult+=0.05+Math.random()*0.15;document.getElementById('multiplier').innerText=mult.toFixed(2)+'x';if(Math.random()<0.02&&mult>1.5){clearInterval(interval);document.getElementById('status').innerText='CRASHED at '+mult.toFixed(2)+'x';document.getElementById('betBtn').innerText='ADD BET PLEASE';document.getElementById('betBtn').className='bet-btn';bet=0;}},100);}
 updateBal();
 </script>
